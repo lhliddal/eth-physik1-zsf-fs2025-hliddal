@@ -23,6 +23,7 @@ jobs:
             latexmk \
             texlive-latex-extra \
             texlive-fonts-extra \
+            texlive-science \
             texlive-lang-german \
             chktex \
             poppler-utils
