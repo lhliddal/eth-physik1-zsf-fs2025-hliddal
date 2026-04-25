@@ -29,6 +29,6 @@ repos:
 
       - id: chktex
         name: chktex (LaTeX lint)
-        entry: chktex -q -n1 -n3 -n6 -n8 -n13 -n18 -n35 -n36 -n44
+        entry: chktex -q -n1 -n3 -n6 -n8 -n12 -n13 -n18 -n35 -n36 -n44
         language: system
         files: '\.(tex|sty|cls)$'

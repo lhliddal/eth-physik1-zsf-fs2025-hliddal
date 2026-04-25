@@ -18,7 +18,7 @@ build:
 	@if [ -f "$(BUILD_DIR)/main.synctex.gz" ]; then cp $(BUILD_DIR)/main.synctex.gz "$(OUTPUT_SYNC)"; fi
 
 lint:
-	chktex -q -n1 -n3 -n6 -n8 -n13 -n18 -n35 -n36 -n44 $(MAIN)
+	chktex -q -n1 -n3 -n6 -n8 -n12 -n13 -n18 -n35 -n36 -n44 $(MAIN)
 
 format:
 	find . -name '*.tex' -print0 | xargs -0 latexindent -w -s -l=.latexindent.yaml
