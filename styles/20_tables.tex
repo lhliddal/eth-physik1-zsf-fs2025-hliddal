@@ -1,0 +1,119 @@
+% ============================================================
+% 20_tables.tex — Tabellen-Helfer (semantisches Table-System)
+% ============================================================
+% Zentrales Design-Prinzip:
+%   1. Tabellen fuellen IMMER \linewidth (kein manuelles p{0.16..}).
+%   2. Spaltenbreiten werden PROPORTIONAL deklariert (Y{0.18} L{0.54} ...),
+%      sodass die Summe der Faktoren = 1 ergibt.
+%   3. Zebra-Streifen + Header-Highlight sind ins Environment eingebaut;
+%      direkte Farb-Primitive sind in Kapiteln per Linter verboten.
+%
+% Damit ist strukturell ausgeschlossen:
+%   - zu kurze Zebra-Streifen (Tabelle schmaler als Box),
+%   - ueberstehende Zeilen (Content sprengt Box-Breite),
+%   - Drift zwischen Kapiteln (jede Tabelle nutzt dieselben Wrapper).
+
+% ------------------------------------------------------------
+% Spaltentypen (tabularx-X-Varianten)
+% ------------------------------------------------------------
+% Feste Varianten — jede zaehlt als Faktor 1:
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}   % linksbuendig, umbricht
+\newcolumntype{C}{>{\Centering\arraybackslash}X}     % zentriert,  umbricht
+\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}    % rechtsbuendig, umbricht
+
+% Parametrisierte, proportionale Varianten — #1 = relativer Anteil.
+%
+% WICHTIG (tabularx-Konvention): Die Summe aller Faktoren in EINER
+% Tabelle muss = Anzahl X-Spalten sein, damit die Tabelle \linewidth
+% voll ausfuellt. L/C/R zaehlen als Faktor 1.
+%
+% Beispiele (2 Spalten → Summe 2):
+%   Y{0.6}  Y{1.4}            → 30% / 70%
+%   Y{1}    Y{1}              → 50% / 50% (== L L)
+%   Q{0.8}  Y{1.2}            → 40% / 60%, Spalte 1 rechtsbuendig
+% Beispiele (3 Spalten → Summe 3):
+%   Y{0.6}  Y{1.5}  Y{0.9}    → 20% / 50% / 30%
+%   L       Y{2}    L         → 25% / 50% / 25%
+% Beispiele (4 Spalten → Summe 4):
+%   Y{1.2}  Y{0.8}  Y{1.2}  Y{0.8}  → 30% / 20% / 30% / 20%
+\newcolumntype{Y}[1]{>{\hsize=#1\hsize\RaggedRight\arraybackslash}X} % linksb., proport.
+\newcolumntype{Z}[1]{>{\hsize=#1\hsize\Centering\arraybackslash}X}   % zentriert, proport.
+\newcolumntype{Q}[1]{>{\hsize=#1\hsize\RaggedLeft\arraybackslash}X}  % rechtsb., proport.
+
+% Zentrierte Formel-Spalte (Math-Mode automatisch, proportional)
+\newcolumntype{F}[1]{>{\hsize=#1\hsize\Centering\arraybackslash$}X<{$}}
+
+% ------------------------------------------------------------
+% Zebra-Streifen (Scannbarkeit)
+% ------------------------------------------------------------
+\newcommand{\ZSFzebraBG}{\chaptercolorlight!70}
+\newcommand{\SetZSFzebraBG}[1]{\renewcommand{\ZSFzebraBG}{#1}}
+\newcommand{\ZSFzebra}{\rowcolors{2}{white}{\ZSFzebraBG}}          % Header in Zeile 1
+\newcommand{\ZSFzebraStart}[1]{\rowcolors{#1}{white}{\ZSFzebraBG}} % frei waehlbar
+\newcommand{\ZSFzebraOff}{\rowcolors{1}{}{}}
+
+% ------------------------------------------------------------
+% Header-Highlight
+% ------------------------------------------------------------
+% Konvention:
+%   \ZSFheaderRow   — startet die Header-Zeile und setzt den Zeilen-Hintergrund.
+%   \ZSFhead{<Text>} — umschliesst den Inhalt JEDER Header-Zelle (Farbe + bold).
+%
+% Warum zweigeteilt? In tabularx-X-Spalten propagiert \color, das direkt nach
+% \rowcolor am Zeilenanfang gesetzt wird, NICHT zuverlaessig ueber die
+% &-Grenzen. Die erste Zelle verliert die Farbe, andere behalten sie — je
+% nach Spaltenbreite und Content (siehe SI-Praefix-Bug). Per-Zelle-Wrapper
+% via \ZSFhead{...} ist robust und konsistent.
+\newcommand{\ZSFheaderRowBG}{\chaptercolor}
+\newcommand{\ZSFheaderRowFG}{white}
+\newcommand{\ZSFheaderRow}{\rowcolor{\ZSFheaderRowBG}}
+\newcommand{\ZSFhead}[1]{{\color{\ZSFheaderRowFG}\bfseries #1}}
+
+% ------------------------------------------------------------
+% Semantische Tabellen-Environments (Single Point of Truth)
+% ------------------------------------------------------------
+% Signatur (alle drei Varianten):
+%   \begin{ZSFtable}[<font>]{<colspec>}       -- Header + Zebra ab Zeile 2
+%   \begin{ZSFtableFlat}[<font>]{<colspec>}   -- kein Header, Zebra ab Zeile 1
+%   \begin{ZSFtablePlain}[<font>]{<colspec>}  -- ohne Zebra
+%
+% <font> ist OPTIONAL und ein semantisches Font-Makro aus
+% styles/50_typography_semantics.tex:
+%   - \ZSFfontTable        (Default, \normalsize)
+%   - \ZSFfontTableDense   (\footnotesize — fuer lange/dichte Tabellen)
+%
+% colspec nutzt L/C/R (gleichverteilt, jeweils Faktor 1) oder
+% Y{.}/Z{.}/Q{.}/F{.} (proportional). Summe der Faktoren muss gleich
+% der Anzahl X-Spalten sein (tabularx-Konvention).
+%
+% Beispiel:
+%   \begin{ZSFtable}[\ZSFfontTableDense]{Y{0.6} Y{1.55} Y{0.85}}
+%     \ZSFheaderRow \ZSFhead{Symbol} & \ZSFhead{Bedeutung} & \ZSFhead{SI-Einheit} \\
+%     $e$ & Elementarladung & \si{C} \\
+%     ...
+%   \end{ZSFtable}
+
+\NewDocumentEnvironment{ZSFtable}{O{\ZSFfontTable} m}{%
+  #1%
+  \ZSFzebra
+  \tabularx{\linewidth}{#2}%
+}{%
+  \endtabularx
+}
+
+\NewDocumentEnvironment{ZSFtableFlat}{O{\ZSFfontTable} m}{%
+  #1%
+  \ZSFzebraStart{1}%
+  \tabularx{\linewidth}{#2}%
+}{%
+  \endtabularx
+}
+
+% Reine Tabelle ohne Zebra (selten; fuer einspaltige Zebraschaeden etc.)
+\NewDocumentEnvironment{ZSFtablePlain}{O{\ZSFfontTable} m}{%
+  #1%
+  \ZSFzebraOff
+  \tabularx{\linewidth}{#2}%
+}{%
+  \endtabularx
+}

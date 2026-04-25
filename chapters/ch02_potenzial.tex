@@ -1,0 +1,112 @@
+% !TEX root = ../main.tex
+% SECTION 2: POTENZIAL UND ENERGIE
+% ============================================================
+
+\StartChapter{Elektrisches Potenzial und Energie}
+
+\begin{runintext}
+Formeln zum \ZSFkeyword{elektrischen Potenzial} und zur gespeicherten Energie: \ZSFkeyword{Potenzialdifferenzen}, Potenziale typischer Ladungsverteilungen und Zusammenhang zwischen Potenzial und Feld. Nützlich bei Aufgaben zu Spannungen, \ZSFkeyword{Energiebilanzen}, Arbeit des Feldes und beim Wechsel zwischen Feld- und Potenzialbeschreibung.
+\end{runintext}
+
+\SubsectionBar[sec:2-1]{Potenzialdifferenz}
+\begin{runintext}
+Formeln, wie sich \ZSFkeyword{Potenzialdifferenzen} aus dem E-Feld ergeben und welche Einheiten zu \ZSFkeyword{Volt} gehören; nützlich, wenn Spannungen aus Feldern oder verrichteter Arbeit bestimmt werden.
+\end{runintext}
+\begin{defbox}[Potenzialdifferenz]
+Negativ der \ZSFkeyword{Arbeit pro Ladungseinheit}, die das Feld verrichtet bei Verschiebung von $a$ nach $b$.
+\end{defbox}
+
+\begin{warnbox}[Merke: Potenzial-Berechnung]
+Potenzial \textbf{immer vom \ZSFkeyword{Referenzpunkt}} (meist bei $\infty$, wo $\varphi=0$) zum Zielpunkt $\vec{r}$ integrieren:
+\[ \varphi(\vec{r}) = -\int_{\infty}^{\vec{r}} \vec{E}\cdot\mathrm{d}\vec{s} \]
+\end{warnbox}
+
+\begin{formulabox}
+\[ \Delta\varphi = \varphi_b - \varphi_a = \frac{\Delta E_{\mathrm{el}}}{q_0} = -\int_a^b \vec{E}\cdot\mathrm{d}\vec{s} \]
+\formulanote{Zweck: Potenzialdifferenz als Linienintegral des E-Felds.}
+\formulasep
+\[ \mathrm{d}\varphi = -\vec{E}\cdot\mathrm{d}\vec{s} \]
+\[ 1\,\si{V} = 1\,\si{J/C} \]
+\[ 1\,\si{N/C} = 1\,\si{V/m} \]
+\[ 1\,\si{eV} = 1{,}60\times 10^{-19}\,\si{C\cdot V} = 1{,}60\times 10^{-19}\,\si{J} \]
+\formulanote{Zweck: Definition Volt, E-Feld-Einheit, Elektronenvolt.}
+\formulasep
+\[ E_{\mathrm{kin}} = \frac{1}{2}mv^2 \quad \text{Kinetische Energie} \]
+\[ W_{\mathrm{el}} = qU = \frac{1}{2}mv^2 \quad \text{Beschleunigung} \]
+\formulanote{Zweck: Beschleunigung von Ladung $q$ durch Spannung $U$ aus Ruhe.}
+\end{formulabox}
+
+\SubsectionBar[sec:2-2]{Potenzial, Verteilungen}
+\begin{runintext}
+Ausdrücke für das Potenzial verschiedener \ZSFkeyword{Ladungsverteilungen}; brauchst du, wenn Potenziale in Punkten gesucht oder Energien später über Potenziale berechnet werden.
+\end{runintext}
+\begin{formulabox}
+\[ \varphi = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r} - \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r_B} \quad \text{Punktladung Ref.\ $r_B$} \]
+\[ \varphi = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r} \quad \text{Coulomb, $\varphi=0$ bei $r\to\infty$} \]
+\formulasep
+\[ \varphi = \sum_i \frac{1}{4\pi\varepsilon_0}\,\frac{q_i}{r_i} \quad \text{System} \]
+\[ \varphi = \int \frac{1}{4\pi\varepsilon_0}\,\frac{\mathrm{d}q'}{r} \quad \text{Kontinuierlich} \]
+\formulasep
+\[ \varphi = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{\sqrt{z^2+a^2}} \quad \text{Ringachse} \]
+\formulasep
+\[ \varphi = \frac{\sigma}{2\varepsilon_0}\,|z|\left(\sqrt{1+\frac{r_S^2}{z^2}}-1\right) \quad \text{Scheibe Achse} \]
+\formulasep
+\[ \varphi = \varphi_0 - \frac{\sigma}{2\varepsilon_0}\,|x| \quad \text{Unendliche Ebene} \]
+\formulasep
+\[ \varphi = \dfrac{1}{4\pi\varepsilon_0}\,\dfrac{q}{r}\;\text{($r\ge r_K$)}; \quad \varphi = \dfrac{1}{4\pi\varepsilon_0}\,\dfrac{q}{r_K}\;\text{($r\le r_K$)} \]
+\formulasep
+\[ \varphi = \frac{1}{2\pi\varepsilon_0}\,\ln\frac{r_B}{r} \quad \text{Linienladung} \]
+\formulanote{Zweck: Potenzial für Punktladung, System, Kontinuum, Ring, Scheibe, Ebene, Kugel, Linie.}
+\end{formulabox}
+\begin{runintext}
+Potenzial stetig im Raum.
+\end{runintext}
+
+\SubsectionBar[sec:2-3]{E und Grad phi}
+\begin{runintext}
+Zusammenhang zwischen Potenzial und Feld über Ableitungen bzw.\ den \ZSFkeyword{Gradienten}; nützlich, um aus einem gegebenen Potenzial das E-Feld oder aus dem Feld die Potenzialänderung zu bestimmen.
+\end{runintext}
+\begin{runintext}
+$\vec{E}$ zeigt in Richtung \ZSFkeyword{stärkster Abnahme} von $\varphi$.
+\end{runintext}
+\begin{runintext}
+\textbf{Bedeutung der Indizes:} $t$ = tangentiale Richtung entlang eines Wegstücks $\mathrm{d}\vec{s}$; $x$ = kartesische Koordinate (Richtung x-Achse); $r$ = radiale Koordinate (Kugelkoordinaten oder Zylinderkoordinaten, Abstand von einer Achse/einem Punkt).
+\end{runintext}
+\begin{formulabox}
+\[ E_t = -\frac{\mathrm{d}\varphi}{|\mathrm{d}\vec{s}|} \]
+\[ E_x = -\frac{\mathrm{d}\varphi(x)}{\mathrm{d}x} \]
+\[ E_r = -\frac{\mathrm{d}\varphi(r)}{\mathrm{d}r} \]
+\formulasep
+\[ \vec{E} = -\nabla\varphi = -\left(\frac{\partial\varphi}{\partial x}\hat{x} + \frac{\partial\varphi}{\partial y}\hat{y} + \frac{\partial\varphi}{\partial z}\hat{z}\right) \]
+\formulasep
+\[ \varphi_b - \varphi_a = -\int_a^b \vec{E}\cdot\mathrm{d}\vec{s} \]
+\formulanote{Zweck: E-Feld aus Potenzial (Gradient); Potenzialdifferenz aus Linienintegral.}
+\end{formulabox}
+
+\SubsectionBar[sec:2-4]{Elektrische Energie}
+\begin{runintext}
+Formeln für \ZSFkeyword{gespeicherte elektrische Energie} einzelner Ladungen, Leiter und Leitersysteme; brauchst du bei Energiebilanzen und Kapazitäts- bzw.\ Potenzialaufgaben.
+\end{runintext}
+\begin{formulabox}
+\[ E_{\mathrm{el}} = q_0\varphi = \frac{1}{4\pi\varepsilon_0}\,\frac{q_0 q}{r} \quad \text{($E_{\mathrm{el}}=0$ bei $r\to\infty$)} \]
+\formulanote{Zweck: Elektrostatische Energie Probeladung im Potenzial bzw.\ Zweiladungssystem.}
+\formulasep
+\[ E_{\mathrm{el}} = \frac{1}{2}\sum_{i=1}^n q_i\varphi_i \quad \text{Punktladungen} \]
+\[ E_{\mathrm{el}} = \frac{1}{2}\,q\varphi \quad \text{Leiter} \]
+\[ E_{\mathrm{el}} = \frac{1}{2}\sum_{i=1}^n q_i\varphi_i \quad \text{Leitersystem} \]
+\formulanote{Zweck: Gespeicherte elektrische Energie (Punktladungen, Leiter, Leitersystem).}
+\end{formulabox}
+
+\SubsectionBar[sec:2-5]{Durchschlagfestigkeit}
+\begin{runintext}
+Richtwert für maximale Feldstärke vor elektrischer \ZSFkeyword{Durchschlagionisation}; nützlich, um abzuschätzen, ob eine reale Anordnung bei gegebenem Feld noch isolierend bleibt.
+\end{runintext}
+\begin{runintext}
+Nicht-kugelförmiger Leiter: $\sigma$ maximal wo Krümmungsradius minimal. \ZSFkeyword{Dielektrischer Durchschlag}: bei hohem Feld wird Medium leitend.
+\end{runintext}
+\begin{formulabox}
+\[ E_{\max} \approx 3\times 10^6\,\si{V/m} = 3\,\si{MV/m} \quad \text{trockene Luft} \]
+\formulanote{Zweck: Ungefähre Durchschlagfeldstärke trockene Luft.}
+\end{formulabox}
+
+% ============================================================

@@ -1,0 +1,149 @@
+% !TEX root = ../main.tex
+% SECTION 0: WICHTIGE FORMELN
+% ============================================================
+
+\StartChapterOnNewColumn{Wichtige Formeln}
+
+\begin{runintext}
+Kompakter Querschnitt zentraler Beziehungen aus den Kapiteln 1--11.
+\end{runintext}
+
+\begin{runintext}
+Grundlagen der Elektrostatik: Kraft zwischen zwei Ladungen und das von einer Punktladung erzeugte elektrische Feld.
+\end{runintext}
+\begin{formulabox}
+\[ \vec{F} = \frac{1}{4\pi\varepsilon_0}\,\frac{q_1 q_2}{r^2}\,\hat{r} \quad \text{Coulomb} \]
+\formulasep
+\[ \vec{E} = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r^2}\,\hat{r} \quad \text{E-Feld Punktladung} \]
+\formulanote{Zweck: Kraft zwischen Ladungen; E-Feld einer Punktladung.}
+\end{formulabox}
+
+\begin{runintext}
+Zusammenhang zwischen Ladung, elektrischem Fluss und Potenzial. Wichtig für Aufgaben mit Symmetrie oder Energieberechnung.
+\end{runintext}
+\begin{formulabox}
+\[ \oint \vec{E}\cdot\mathrm{d}\vec{A} = \frac{q_{\mathrm{in}}}{\varepsilon_0} \quad \text{Gauß E} \]
+\formulasep
+\[ \varphi = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r}, \quad \vec{E} = -\nabla\varphi \quad \text{Potenzial} \]
+\formulanote{Zweck: Gauß (Fluss $\propto$ Ladung); Potenzial und E $= -\nabla\varphi$.}
+\end{formulabox}
+
+\begin{runintext}
+\textbf{Dünne Kugelschale} (Radius $R$, Ladung $Q$): Im Inneren ist das E-Feld null (Faraday-Käfig) und das Potenzial ortsunabhängig konstant. Aussen wirkt die Schale wie eine Punktladung im Zentrum. Wichtig für Hohlleiter, geerdete Kugeln und Influenz-Aufgaben.
+\end{runintext}
+\begin{formulabox}
+\[
+\text{Schale:} \begin{cases}
+E = 0, \hfill & r < R \\
+\varphi = \frac{1}{4\pi\varepsilon_0}\frac{Q}{R}, \hfill & r < R \\[1ex]
+E = \frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}, \hfill & r > R \\
+\varphi = \frac{1}{4\pi\varepsilon_0}\frac{Q}{r}, \hfill & r > R
+\end{cases}
+\]
+\formulanote{Zweck: E-Feld \& Potenzial einer geladenen Kugelschale.}
+\end{formulabox}
+
+\begin{runintext}
+Superposition: Gesamtpotenzial einer gleichmässig geladenen \textbf{Vollkugel} ($R_1$, $Q_1$) innerhalb zweier konzentrischer \textbf{Kugelschalen} ($R_2, R_3$). Oft als Prüfungstrick geprüft. Mit $k = \frac{1}{4\pi\varepsilon_0}$:
+\end{runintext}
+\begin{formulabox}
+\[
+\varphi(r) = k \begin{cases}
+ \begin{aligned}&\tfrac{Q_1}{2R_1^3}(3R_1^2 - r^2)\\ &+ \tfrac{Q_2}{R_2} + \tfrac{Q_3}{R_3}\end{aligned}, & r < R_1 \\[2ex]
+ \frac{Q_1}{r} + \frac{Q_2}{R_2} + \frac{Q_3}{R_3}, & R_1 \le r < R_2 \\[1ex]
+ \frac{Q_1 + Q_2}{r} + \frac{Q_3}{R_3}, & R_2 \le r < R_3 \\[1ex]
+ \frac{Q_1 + Q_2 + Q_3}{r}, & r \ge R_3
+\end{cases}
+\]
+\formulanote{Zweck: Gesamtpotenzial addiert sich aus den inneren und äusseren Schalenbeiträgen (innen = konstant, aussen = $1/r$).}
+\end{formulabox}
+
+\begin{runintext}
+Kapazität und Energiespeicherung, insbesondere für den idealisierten Plattenkondensator.
+\end{runintext}
+\begin{formulabox}
+\[ C = \frac{q}{U} \quad \text{Kapazität} \]
+\formulasep
+\[ C = \frac{\varepsilon_0 A}{d} \quad \text{Platte}, \quad E_{\mathrm{el}} = \frac{1}{2}CU^2 \]
+\formulanote{Zweck: Kapazität; Plattenkondensator; gespeicherte Energie.}
+\end{formulabox}
+
+\begin{runintext}
+Grundgleichungen für Stromkreise: Ohmsches Gesetz, Kirchhoff'sche Regeln für Maschen/Knoten und Zeitkonstante für das Entladen.
+\end{runintext}
+\begin{formulabox}
+\[
+\begin{gathered}
+U = R\,I, \quad R = \rho\,\ell/A \quad \text{Ohm} \\
+\sum U = 0 \;\text{(Maschen)},\; \sum I_{\mathrm{in}} = \sum I_{\mathrm{out}} \;\text{(Knoten)} \\
+\tau = RC
+\end{gathered}
+\]
+\formulanote{Zweck: Ohm; Kirchhoff; RC-Zeitkonstante.}
+\end{formulabox}
+
+\begin{runintext}
+Magnetostatik: Kraft auf bewegte Ladungen, Magnetfeld von Strömen und das Gesetz von Ampère.
+\end{runintext}
+\begin{formulabox}
+\[ \vec{F} = q\,\vec{v}\times\vec{B} \quad \text{Lorentz} \]
+\formulasep
+\[ \mathrm{d}\vec{B} = \frac{\mu_0}{4\pi}\,\frac{I\,\mathrm{d}\vec{\ell}\times\hat{r}}{r^2} \quad \text{Biot-Savart} \]
+\formulasep
+\[ \oint \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0 I \quad \text{Ampère} \]
+\formulanote{Zweck: Lorentzkraft; B-Feld Stromelement; Ampère.}
+\end{formulabox}
+
+\begin{runintext}
+Elektromagnetische Induktion nach Faraday und Energie im Magnetfeld einer Spule.
+\end{runintext}
+\begin{formulabox}
+\[ U_{\mathrm{ind}} = -\frac{\mathrm{d}\Phi_{\mathrm{mag}}}{\mathrm{d}t} \quad \text{Faraday} \]
+\formulasep
+\[ n\,\Phi_{\mathrm{mag}} = L\,I, \quad E_{\mathrm{mag}} = \frac{1}{2}LI^2 \]
+\formulanote{Zweck: Faraday; Selbstinduktion; magnetische Energie.}
+\end{formulabox}
+
+\begin{runintext}
+Wechselstrom: Widerstände von Spule/Kondensator, Eigenfrequenz eines Schwingkreises und Spannungsübersetzung.
+\end{runintext}
+\begin{formulabox}
+\[ X_L = \omega L, \quad X_C = 1/(\omega C), \quad \omega_0 = 1/\sqrt{LC} \quad \text{LC} \]
+\formulasep
+\[ U_2/U_1 = n_2/n_1 \quad \text{Transformator} \]
+\formulanote{Zweck: Blindwiderstände; LC-Eigenfrequenz; Transformator-Übersetzung.}
+\end{formulabox}
+
+\begin{runintext}
+Elektromagnetische Wellen: Ausbreitungsgeschwindigkeit, Verhältnis von E zu B und Energietransport.
+\end{runintext}
+\begin{formulabox}
+\[ c = 1/\sqrt{\mu_0\varepsilon_0}, \quad E = c\,B \quad \text{EM-Welle} \]
+\formulasep
+\[ \vec{S} = \vec{E}\times\vec{B}/\mu_0 \quad \text{Poynting} \]
+\formulanote{Zweck: Lichtgeschwindigkeit; E/B in Welle; Poynting-Vektor.}
+\end{formulabox}
+
+\begin{runintext}
+Optik: Brechungsgesetz, Abbildungsgleichung für Linsen/Spiegel und Beugung am Gitter.
+\end{runintext}
+\begin{formulabox}
+\[ n_1\sin\theta_1 = n_2\sin\theta_2 \quad \text{Snellius} \]
+\formulasep
+\[ \frac{1}{g}+\frac{1}{b} = \frac{1}{f} \quad \text{Spiegel/Linse} \]
+\formulasep
+\[ g\,\sin\theta_m = m\,\lambda \quad \text{Gitter} \]
+\formulanote{Zweck: Brechung; Abbildung Spiegel/Linse; Gitter-Maxima.}
+\end{formulabox}
+
+\begin{runintext}
+Einführung in die Quantenphysik: Energie/Impuls von Photonen und die Heisenberg'sche Unschärferelation.
+\end{runintext}
+\begin{formulabox}
+\[ E = h\nu, \quad p = h/\lambda \quad \text{Photon} \]
+\formulasep
+\[ \Delta x\,\Delta p \ge \hbar/2 \quad \text{Heisenberg} \]
+\formulanote{Zweck: Photon Energie/Impuls; Unschärferelation.}
+\end{formulabox}
+
+% ============================================================

@@ -1,0 +1,204 @@
+% !TEX root = ../main.tex
+% SECTION 1: ELEKTRISCHES FELD
+% ============================================================
+
+\StartChapter{Elektrisches Feld}
+
+\begin{runintext}
+Formeln zu Kräften und Feldern von Punktladungen und Ladungsverteilungen: \ZSFkeyword{Coulomb-Kraft}, elektrisches Feld einzelner und vieler Ladungen, \ZSFkeyword{Dipole}, Feldlinien, Fluss und \ZSFkeyword{Gauß-Gesetz}. Nützlich bei Aufgaben mit Ladungen, Feldverläufen, Fluss und Symmetrie-Gauß-Flächen.
+\end{runintext}
+
+\SubsectionBar[sec:1-1]{Ladung, Coulomb}
+\begin{runintext}
+Formeln für Ladungsmengen und die Kraft zwischen zwei \ZSFkeyword{Punktladungen}; brauchst du, wenn in Aufgaben einzelne Ladungen und ihre Wechselwirkung im Abstand $r$ vorkommen.
+\end{runintext}
+\begin{defbox}[Elementarladung]
+\ZSFkeyword{Quantisierung}: Ladung in Vielfachen von $e$. Elektron: $-e$, Proton: $+e$.
+\end{defbox}
+\begin{formulabox}
+\[ e = 1{,}60 \times 10^{-19}\,\si{C} \]
+\formulanote{Zweck: Betrag der Elementarladung.}
+\end{formulabox}
+\begin{runintext}
+Ladung bleibt erhalten (weder erzeugt noch vernichtet). \ZSFkeyword{Leiter}: delokalisierte Elektronen; Nichtleiter: lokalisierte. \ZSFkeyword{Influenz}: Leiter erden, Ladung nähern, Erde trennen, Ladung entfernen.
+\end{runintext}
+\begin{defbox}[Coulomb'sches Gesetz]
+Kraft von $q_1$ auf $q_2$ im Abstand $r$; $\hat{r}$ von $q_1$ nach $q_2$.
+\end{defbox}
+\begin{formulabox}
+\[ \vec{F} = \frac{1}{4\pi\varepsilon_0}\,\frac{q_1 q_2}{r^2}\,\hat{r} \]
+\formulanote{Zweck: Kraft zwischen zwei Punktladungen.}
+\formulasep
+\[ \frac{1}{4\pi\varepsilon_0} = 8{,}99\times 10^9\,\si{N.m^2/C^2} \]
+\[ \varepsilon_0 = 8{,}85\times 10^{-12}\,\si{C^2/(N.m^2)} \]
+\formulanote{Zweck: Coulomb-Konstante bzw.\ Einheit.}
+\end{formulabox}
+
+\SubsectionBar[sec:1-2]{E-Feld, Superposition}
+\begin{runintext}
+Formeln für das elektrische Feld durch eine oder viele Ladungen; nützlich, wenn Feldstärken in Punkten und die Überlagerung mehrerer Ladungen gefragt sind.
+\end{runintext}
+\begin{defbox}[Elektrisches Feld]
+Quotient Kraft/\ZSFkeyword{Probeladung}: $\vec{E} = \vec{F}/q_0$.
+\end{defbox}
+\begin{formulabox}
+\[ \vec{E} = \frac{\vec{F}}{q_0} \]
+\formulanote{Zweck: Definition des E-Felds (Kraft pro Probeladung).}
+\formulasep
+\[ \vec{E} = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r^2}\,\hat{r} \quad \text{Punktladung} \]
+\formulanote{Zweck: E-Feld einer Punktladung.}
+\formulasep
+\[ \vec{E} = \sum_i \vec{E}_i = \sum_i \frac{1}{4\pi\varepsilon_0}\,\frac{q_i}{r_i^2}\,\hat{r}_i \quad \text{Superposition} \]
+\formulanote{Zweck: E-Feld durch Überlagerung mehrerer Ladungen.}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Feldlinien}: von + nach $-$; Dichte $\propto$ Feldstärke.
+\end{runintext}
+
+\SubsectionBar[sec:1-3]{Dipol}
+\begin{runintext}
+Formeln für \ZSFkeyword{Dipolmoment}, \ZSFkeyword{Drehmoment} und Energie eines Dipols im Feld; brauchst du bei Aufgaben zu polaren Molekülen oder kleinen Ladungspaaren im homogenen E-Feld. \ZSFkeyword{Dipol}: zwei entgegengesetzt gleiche Ladungen, Abstand $\vec{\ell}$ (von $-$ nach $+$).
+\end{runintext}
+
+\begin{defbox}[Elektrischer Dipol \& Feldlinien]
+\begin{splitbox}[0.65]
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/electric_dipole.png}
+    \ZSFfigcaption{Zwei Ladungen $\pm q$ im Abstand $\vec{\ell}$}
+    \tcblower
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/Elektrostatik_Dipol_Feldlinien_Symmetrie.png}
+    \ZSFfigcaption{Feldlinien verlaufen von $+$ nach $-$}
+\end{splitbox}
+\end{defbox}
+
+\begin{formulabox}
+\[ \vec{p} = q\,\vec{\ell} \quad \text{Dipolmoment} \]
+\formulanote{Zweck: Definition des elektrischen Dipolmoments.}
+\formulasep
+\[ \vec{M} = \vec{p} \times \vec{E} \quad \text{Drehmoment im homogenen E-Feld} \]
+\formulanote{Zweck: Drehmoment auf Dipol im E-Feld.}
+\formulasep
+\[ E_{\mathrm{pot}} = -\vec{p}\cdot\vec{E} + U_0 \quad \text{($U_0$ oft $=0$)} \]
+\formulanote{Zweck: Potenzielle Energie des Dipols im E-Feld.}
+\end{formulabox}
+\begin{runintext}
+Fernfeld $\propto p/r^3$. \ZSFkeyword{Polare Moleküle}: permanentes $\vec{p}$; nichtpolar: induzierbar.
+\end{runintext}
+
+\begin{minipage}{\linewidth}
+\SubsectionBar[sec:1-4]{Ladungsverteilungen}
+\begin{runintext}
+Formel, um das E-Feld \ZSFkeyword{kontinuierlicher Ladungsverteilungen} (Volumen-, Flächen- oder Linienladungen) über ein Integral zu berechnen; nützlich bei ausgedehnten Ladungswolken, Drähten oder Flächen.
+\end{runintext}
+\begin{formulabox}
+\[ \vec{E} = \int \mathrm{d}\vec{E} = \frac{1}{4\pi\varepsilon_0} \int \frac{\mathrm{d}q}{r^2}\,\hat{r} \]
+\formulanote{Zweck: E-Feld durch Integration über Ladungsverteilung.}
+\end{formulabox}
+\begin{runintext}
+$\mathrm{d}q = \rho\,\mathrm{d}V$ (Raum), $\mathrm{d}q = \sigma\,\mathrm{d}A$ (Fläche), $\mathrm{d}q = \lambda\,\mathrm{d}\ell$ (Linie).
+\end{runintext}
+\end{minipage}
+
+\SubsectionBar[sec:1-5]{Elektrischer Fluss}
+\begin{runintext}
+Formel für den \ZSFkeyword{elektrischen Fluss} durch eine Fläche; brauchst du, wenn in Aufgaben Feldlinienanzahl oder Fluss durch eine gegebene Fläche vorkommt und als Vorbereitung für das \ZSFkeyword{Gauß-Gesetz}.
+\end{runintext}
+\begin{formulabox}
+\[ \Phi_{\mathrm{el}} = \lim_{\Delta A_i\to 0} \sum_i \vec{E}_i\cdot\Delta\vec{A}_i = \int_A \vec{E}\cdot\mathrm{d}\vec{A} \]
+\formulanote{Zweck: Elektrischer Fluss durch Fläche $A$.}
+\end{formulabox}
+
+\SubsectionBar[sec:1-6]{Gauß}
+\begin{runintext}
+Integralform des \ZSFkeyword{Gauß-Gesetzes} und Randwerte am Leiter; nützlich zur Bestimmung von E-Feldern stark symmetrischer Ladungsverteilungen ohne explizite Integration.
+\end{runintext}
+\begin{formulabox}
+\[ \Phi_{\mathrm{el}} = \oint_A \vec{E}\cdot\mathrm{d}\vec{A} = \oint_A E_n\,\mathrm{d}A = \frac{q_{\mathrm{innen}}}{\varepsilon_0} \]
+\formulanote{Zweck: Gauß'sches Gesetz; Fluss $\propto$ eingeschlossene Ladung.}
+\end{formulabox}
+\begin{formulabox}
+\[
+\begin{gathered}
+\oint_A \vec{E}\cdot\mathrm{d}\vec{A} = E(r)\,4\pi r^2 = \frac{q_{\mathrm{innen}}(r)}{\varepsilon_0} \\[-2pt]
+\text{Kugelsymmetrie (auf Kugelflaeche ist $E$ konstant)}
+\end{gathered}
+\]
+\[ E(r) = \frac{1}{4\pi\varepsilon_0}\,\frac{q_{\mathrm{innen}}(r)}{r^2} \]
+\formulanote{Zweck: Vereinfachte Gauß-Form bei Kugelsymmetrie; kein neues Gesetz.}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Leiter}: Ladung nur auf Oberfläche; im Inneren $\rho=0$.
+\end{runintext}
+\begin{formulabox}
+\[ \Delta E_n = E_{n,+} - E_{n,-} = \frac{\sigma}{\varepsilon_0} \quad \text{Unstetigkeit} \]
+\[ E_n = \frac{\sigma}{\varepsilon_0} \quad \text{unmittelbar außerhalb Leiter} \]
+\formulanote{Zweck: Normalkomponente des E-Felds an geladener Oberfläche (Leiter).}
+\end{formulabox}
+
+\SubsectionBar[sec:1-7]{Symmetrische Felder}
+\begin{runintext}
+Fertige Resultate für E-Felder typischer Symmetrien (Linienladung, Ring, Scheibe, Ebene, Kugel); praktisch zum schnellen Einsetzen in Zahlenaufgaben mit diesen \ZSFkeyword{Standardgeometrien}.
+\end{runintext}
+\begin{formulabox}
+\[
+\begin{gathered}
+\vec{E} = \frac{1}{2\pi\varepsilon_0}\,\frac{\lambda}{r_\perp}\,\hat{r}_\perp \\[-2pt]
+\text{Linienladung unendlich}
+\end{gathered}
+\]
+\end{formulabox}
+
+\begin{formulabox}
+\[ \lambda = \sigma\,2\pi r \quad \text{zylindrischer Leiter} \]
+\formulanote{Zweck: Umrechnung zwischen Flaechenladungsdichte $\sigma$ und Linienladungsdichte $\lambda$ bei Radius $r$.}
+\end{formulabox}
+
+\begin{formulabox}
+\[
+\begin{gathered}
+E_z = \frac{1}{4\pi\varepsilon_0}\,\frac{qz}{(z^2+a^2)^{3/2}} \\[-2pt]
+\text{Ringachse}
+\end{gathered}
+\]
+\end{formulabox}
+
+\begin{formulabox}
+\[
+\begin{gathered}
+E_z = \frac{\sigma}{2\varepsilon_0}\,\sgn(z)\left(1 - \left(1+\frac{r_S^2}{z^2}\right)^{-1/2}\right) \\[-2pt]
+\text{Kreisscheibe Achse}
+\end{gathered}
+\]
+\end{formulabox}
+
+\begin{formulabox}
+\[
+\begin{gathered}
+E = E_z = \sgn(z)\,\frac{\sigma}{2\varepsilon_0} \\[-2pt]
+\text{Unendliche Ebene}
+\end{gathered}
+\]
+\end{formulabox}
+
+\begin{formulabox}
+\[
+\begin{gathered}
+E = \dfrac{1}{4\pi\varepsilon_0}\,\dfrac{q}{r^2}\;\text{für $r>r_K$};\quad E=0\;\text{für $r<r_K$} \\[-2pt]
+\text{Kugelschale}
+\end{gathered}
+\]
+\formulanote{Zweck: E-Feld typischer symmetrischer Verteilungen (Linie, Ring, Scheibe, Ebene, Kugel).}
+\end{formulabox}
+
+\begin{formulabox}
+\[
+\begin{gathered}
+\vec{E}(r) = \frac{\rho}{3\varepsilon_0}\,\vec{r} \qquad (r<R) \\[-2pt]
+\text{homogen geladene Vollkugel (innen)}
+\end{gathered}
+\]
+\formulanote{Aus Gau\ss{}: nur die eingeschlossene Ladung traegt bei, daher waechst $E$ im Inneren linear mit $r$.}
+\end{formulabox}
+
+% ============================================================

@@ -1,0 +1,150 @@
+% ============================================================
+% 40_colors_structure.tex — Farbpaletten & Kapitel-Orchestrierung
+% ============================================================
+
+% ------------------------------------------------------------
+% Named Theme-Palettes (Physik-Domänen)
+% ------------------------------------------------------------
+\definecolor{PaletteElektro}{HTML}{007A33}
+\definecolor{PaletteElektroLight}{HTML}{B8E0C8}
+\definecolor{PaletteMagneto}{HTML}{0069B4}
+\definecolor{PaletteMagnetoLight}{HTML}{8FC4E5}
+\definecolor{PaletteMaxwell}{HTML}{E86C00}
+\definecolor{PaletteMaxwellLight}{HTML}{F5B88A}
+\definecolor{PaletteOptik}{HTML}{6C0E7C}
+\definecolor{PaletteOptikLight}{HTML}{C77BC4}
+
+% ------------------------------------------------------------
+% Index-Palette (20 Slots, CIEDE2000-optimiert fuer 3-Fenster-Kontrast)
+% ------------------------------------------------------------
+% Palette und Reihenfolge wurden perzeptuell (CIEDE2000) via simulated
+% annealing so sortiert, dass aufeinanderfolgende Kapitel (Abstand 1
+% UND 2) maximal unterscheidbar sind. ChapterColor0 ist reserviert
+% fuer den Frontchapter und fest auf ETH-Rot gesetzt.
+\definecolor{ChapterColor0}{HTML}{A50D0D}
+\definecolor{ChapterColor0Light}{HTML}{EED2D2}
+\definecolor{ChapterColor1}{HTML}{5B8C00}
+\definecolor{ChapterColor1Light}{HTML}{DDE8B5}
+\definecolor{ChapterColor2}{HTML}{7211D4}
+\definecolor{ChapterColor2Light}{HTML}{E0D2EE}
+\definecolor{ChapterColor3}{HTML}{D44B11}
+\definecolor{ChapterColor3Light}{HTML}{EEDAD2}
+\definecolor{ChapterColor4}{HTML}{00897B}
+\definecolor{ChapterColor4Light}{HTML}{B2DFDB}
+\definecolor{ChapterColor5}{HTML}{2B0DA5}
+\definecolor{ChapterColor5Light}{HTML}{D8D2EE}
+\definecolor{ChapterColor6}{HTML}{A5680D}
+\definecolor{ChapterColor6Light}{HTML}{EEE3D2}
+\definecolor{ChapterColor7}{HTML}{2E7D32}
+\definecolor{ChapterColor7Light}{HTML}{C8E6C9}
+\definecolor{ChapterColor8}{HTML}{D411C0}
+\definecolor{ChapterColor8Light}{HTML}{EED2EB}
+\definecolor{ChapterColor9}{HTML}{1199D4}
+\definecolor{ChapterColor9Light}{HTML}{D2E5EE}
+\definecolor{ChapterColor10}{HTML}{2BA50D}
+\definecolor{ChapterColor10Light}{HTML}{D8EED2}
+\definecolor{ChapterColor11}{HTML}{A50D68}
+\definecolor{ChapterColor11Light}{HTML}{EED2E3}
+\definecolor{ChapterColor12}{HTML}{860DA5}
+\definecolor{ChapterColor12Light}{HTML}{E8D2EE}
+\definecolor{ChapterColor13}{HTML}{0DA5A5}
+\definecolor{ChapterColor13Light}{HTML}{D2EEEE}
+\definecolor{ChapterColor14}{HTML}{0D4AA5}
+\definecolor{ChapterColor14Light}{HTML}{D2DDEE}
+\definecolor{ChapterColor15}{HTML}{D4114B}
+\definecolor{ChapterColor15Light}{HTML}{EED2DA}
+\definecolor{ChapterColor16}{HTML}{0DA54A}
+\definecolor{ChapterColor16Light}{HTML}{D2EEDD}
+\definecolor{ChapterColor17}{HTML}{86A50D}
+\definecolor{ChapterColor17Light}{HTML}{E8EED2}
+\definecolor{ChapterColor18}{HTML}{1124D4}
+\definecolor{ChapterColor18Light}{HTML}{D2D5EE}
+\definecolor{ChapterColor19}{HTML}{D4C011}
+\definecolor{ChapterColor19Light}{HTML}{EEEBD2}
+
+% ------------------------------------------------------------
+% Warn-/Semantik-Farben
+% ------------------------------------------------------------
+\definecolor{ETHRot}{HTML}{CC0000}
+\colorlet{WarnboxBack}{ETHRot!15}
+
+% Farben für textVorBox / textNachBox (Text-Box-Bindungen)
+\definecolor{TextVorBoxColor}{HTML}{0A0A1E}  % Sehr dunkles Blau (einleitend)
+\definecolor{TextNachBoxColor}{HTML}{0A1A0A}  % Sehr dunkles Grün (ergänzend)
+
+% ------------------------------------------------------------
+% Aktive Kapitelfarben (werden pro Kapitel umgeschaltet)
+% ------------------------------------------------------------
+\newcommand{\chaptercolor}{PaletteElektro}
+\newcommand{\chaptercolorlight}{PaletteElektroLight}
+\newcommand{\ChapterBarColor}{\chaptercolor}
+\newcommand{\SubsectionBarColor}{\chaptercolor!75}
+\newcommand{\FormulaboxBackColor}{\chaptercolorlight!40}
+\newcommand{\BoxTitleColor}{\chaptercolorlight}
+\newcommand{\BoxTitleTextColor}{TextVorBoxColor}        % Titeltext-Farbe (dunkel auf Pastell)
+\newcommand{\BoxBackColor}{\chaptercolorlight!8}        % Sehr sanfter Box-Hintergrund
+\newcommand{\BoxFrameColor}{\chaptercolorlight!25}      % Rahmen in der Farbe des vorherigen Hintergrunds
+
+% ------------------------------------------------------------
+% Palette-Selektoren
+% ------------------------------------------------------------
+
+% Namentliche Themen-Palette (Physik-Domänen, manuell aufrufbar)
+\newcommand{\SetChapterPalette}[1]{%
+  \IfStrEqCase{#1}{%
+    {elektro}{\renewcommand{\chaptercolor}{PaletteElektro}\renewcommand{\chaptercolorlight}{PaletteElektroLight}}%
+    {magneto}{\renewcommand{\chaptercolor}{PaletteMagneto}\renewcommand{\chaptercolorlight}{PaletteMagnetoLight}}%
+    {maxwell}{\renewcommand{\chaptercolor}{PaletteMaxwell}\renewcommand{\chaptercolorlight}{PaletteMaxwellLight}}%
+    {optik}{\renewcommand{\chaptercolor}{PaletteOptik}\renewcommand{\chaptercolorlight}{PaletteOptikLight}}%
+  }[\renewcommand{\chaptercolor}{PaletteElektro}\renewcommand{\chaptercolorlight}{PaletteElektroLight}]%
+}
+
+% Index-basierte Palette (automatisch via \StartChapter, Loop mit Wrap-Warnung)
+\newcount\ZSFchapterPaletteIndex
+\newcommand{\ZSFchapterPaletteSize}{20}       % Anzahl verfügbarer Indexfarben (0..19)
+\newcommand{\ZSFSetChapterPaletteByIndex}[1]{%
+  \renewcommand{\chaptercolor}{ChapterColor#1}%
+  \renewcommand{\chaptercolorlight}{ChapterColor#1Light}%
+}
+\newcommand{\SetChapterPaletteByNumber}{%
+  \ZSFchapterPaletteIndex=\value{section}%
+  \loop
+  \ifnum\ZSFchapterPaletteIndex>\numexpr\ZSFchapterPaletteSize-1\relax
+    \advance\ZSFchapterPaletteIndex by -\ZSFchapterPaletteSize
+  \repeat
+  \ifnum\value{section}>\numexpr\ZSFchapterPaletteSize-1\relax
+    \PackageWarning{ZSF}{Chapter palette wrapped at section \thesection. Increase palette if unique colors are required.}%
+  \fi
+  \ZSFSetChapterPaletteByIndex{\the\ZSFchapterPaletteIndex}%
+}
+
+% ------------------------------------------------------------
+% Chapter-Start-Orchestrierung
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\ZSFPostChapterSpacing}{\vspace*{\ZSFpostChapterNudge}}
+\newcommand{\StartChapter}[2][]{%
+  \ifnum\value{zsfFirstChap}=1\setcounter{zsfFirstChap}{0}\fi
+  \refstepcounter{section}
+  \SetChapterPaletteByNumber
+  \setcounter{subsection}{0}
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  \ChapterBar{\thesection. #2}
+  \ZSFPostChapterSpacing
+}
+\makeatother
+
+% Variante: Kapitel explizit auf neuer Spalte beginnen (wie Analysis)
+\newcommand{\StartChapterOnNewColumn}[2][]{%
+  \columnbreak
+  \StartChapter[#1]{#2}%
+}
+
+\newcommand{\StartFrontChapter}[1]{%
+  \ifnum\value{zsfFirstChap}=1\setcounter{zsfFirstChap}{0}\else\columnbreak\fi
+  \renewcommand{\chaptercolor}{ChapterColor0}%
+  \renewcommand{\chaptercolorlight}{ChapterColor0Light}%
+  \setcounter{subsection}{0}%
+  \ChapterBar{#1}%
+  \ZSFPostChapterSpacing
+}

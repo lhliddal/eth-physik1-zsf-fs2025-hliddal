@@ -1,0 +1,86 @@
+% !TEX root = ../main.tex
+% SECTION 9: WELLENOPTIK
+% ============================================================
+
+\StartChapter{Wellenoptik}
+
+\begin{runintext}
+Beschreibung von Licht als \ZSFkeyword{elektromagnetische Welle}. Umfasst \ZSFkeyword{Brechung}, \ZSFkeyword{Reflexion}, \ZSFkeyword{Polarisation} sowie wellenspezifische Phänomene wie \ZSFkeyword{Interferenz} und \ZSFkeyword{Gitterspektren}.
+\end{runintext}
+
+\SubsectionBar*[sec:9-0]{Licht, Brechzahl, Polarisation}
+\begin{runintext}
+Grundlagen der Lichtausbreitung in verschiedenen Medien und Verhalten des elektrischen Feldvektors (\ZSFkeyword{Polarisation}).
+\end{runintext}
+\begin{formulabox}
+\[ c = 299\,792\,458\,\si{m/s} \]
+\[ c_n = \frac{c}{n} \quad n = \frac{c}{c_n} \quad \text{Brechzahl} \]
+\formulasep
+\[ \theta_1' = \theta_1 \quad \text{Reflexion} \]
+\[ n_1\sin\theta_1 = n_2\sin\theta_2 \quad \text{Snellius} \]
+\[ I = \left(\frac{n_1-n_2}{n_1+n_2}\right)^2 I_0 \quad \text{reflekt. Intensität, senkrecht} \]
+\[ \sin\theta_{\mathrm{k}} = \frac{n_2}{n_1} \quad \text{Totalreflexion, $n_1>n_2$} \]
+\formulasep
+\[ I_2 = I_1\,\cos^2\alpha \quad \text{Malus} \]
+\formulanote{Zweck: Lichtgeschwindigkeit; Brechzahl; Reflexion; Snellius; Totalreflexion; reflekt. Intensität; Malus (Polarisation).}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Dispersion}: $n(\lambda)$; Prisma zerlegt weißes Licht. Polarisation: \ZSFkeyword{linear}/\ZSFkeyword{zirkular}; Erzeugung durch Absorption, Streuung, Reflexion, \ZSFkeyword{Doppelbrechung}.
+\end{runintext}
+
+\SubsectionBar[sec:9-1]{Interferenz, Gitter}
+\begin{runintext}
+Überlagerung von Lichtwellen: \ZSFkeyword{Konstruktive} und \ZSFkeyword{destruktive Interferenz} an Spalten und optischen Gittern durch \ZSFkeyword{Gangunterschiede}.
+\end{runintext}
+\begin{runintext}
+Konstante Phasendifferenz: konstruktiv $0$, $2\pi$, \ldots; destruktiv $\pi$, $3\pi$, \ldots
+\end{runintext}
+\begin{formulabox}
+\begin{longformula}
+\delta = \frac{\Delta r}{\lambda}\,2\pi
+= \frac{\Delta r}{\lambda}\,360^\circ
+\end{longformula}
+\formulasep
+\[ d\,\sin\theta_m = m\,\lambda \quad m = 0,1,2,\ldots \quad \text{Maxima, in Phase} \]
+\[ d\,\sin\theta_m = \left(m-\frac{1}{2}\right)\lambda \quad m = 1,2,3,\ldots \quad \text{Minima, $180^\circ$} \]
+\formulasep
+\[ g\,\sin\theta_m = m\,\lambda \quad \text{Gitter} \]
+\[ \mathcal{A} = \frac{|\lambda|}{\Delta\lambda} = m\,N \quad \text{Auflösungsvermögen} \]
+\formulanote{Zweck: Phasendifferenz; Doppelspalt/Gitter Maxima/Minima; Auflösungsvermögen.}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Phasensprung} $\pi$ bei Reflexion an optisch dichterem Medium. \ZSFkeyword{Dünne Schichten}: Gangunterschied + Reflexionsphasen.
+\end{runintext}
+
+\ZSFfig{graphics/Wellenlehre_Reflexion_Festes_Loses_Ende.png}{Reflexion: festes/loses Ende}{Festes Ende: Phasensprung $\pi$; loses Ende: keiner}
+
+\SubsectionBar[sec:9-2]{Beugung}
+\begin{runintext}
+Ablenkung und Ausbreitung von Licht an Kanten und Einzelspalten als Folge des \ZSFkeyword{Huygens'schen Prinzips}.
+\end{runintext}
+\begin{runintext}
+\ZSFkeyword{Huygens}: jeder Punkt der Wellenfront = \ZSFkeyword{Elementarwelle}. \ZSFkeyword{Fraunhofer}: großer Abstand oder Linse; \ZSFkeyword{Fresnel}: kleiner Abstand.
+\end{runintext}
+\begin{formulabox}
+\[ \sin\theta_1 = \frac{\lambda}{a} \quad \text{erstes Minimum Einzelspalt} \]
+\formulasep
+\[ a\,\sin\theta_m = m\,\lambda \quad m = 1,2,3,\ldots \quad \text{Nullstellen} \]
+\formulanote{Zweck: Beugung am Einzelspalt (erstes Minimum, Nullstellen).}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Doppelspalt}: Interferenzmuster, moduliert durch Einzelspalt-Beugung.
+\end{runintext}
+
+\SubsectionBar[sec:9-3]{Rayleigh}
+\begin{runintext}
+Die Beugung an runden Öffnungen (Teleskope, Auge) limitiert das maximale optische \ZSFkeyword{Auflösungsvermögen}.
+\end{runintext}
+\begin{runintext}
+Zwei Quellen gerade noch aufgelöst, wenn Maximum der einen im ersten Minimum der anderen.
+\end{runintext}
+\begin{formulabox}
+\[ \alpha_{\mathrm{k}} = 1{,}22\,\frac{\lambda}{D} \quad \text{kreisförmige Öffnung $D$} \]
+\formulanote{Zweck: Rayleigh-Kriterium (Auflösungsgrenze kreisförmige Öffnung).}
+\end{formulabox}
+
+% ============================================================

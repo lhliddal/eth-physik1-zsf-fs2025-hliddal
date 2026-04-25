@@ -1,0 +1,72 @@
+% ============================================================
+% 75_pdf_identity.tex -- PDF-Identitaet und Ownership-Nachweis
+% ============================================================
+
+% --- Sichtbarer Name (darf Unicode enthalten) ---
+\newcommand{\ZSFOwnerDisplayName}{Loris Einar Kristj\'an Hliddal}
+
+% --- Technische Felder (ASCII-only fuer robuste Toolchains) ---
+\newcommand{\ZSFOwnerNameASCII}{Loris Einar Kristjan Hliddal}
+\newcommand{\ZSFOwnerID}{LEKH-ZSF-2026-A1B2}
+\newcommand{\ZSFReleaseID}{R2026.04}
+
+% Build-Metadaten koennen ueber Build-Umgebung gesetzt werden.
+\providecommand{\ZSFBuildStamp}{manual}
+\providecommand{\ZSFGitCommit}{nogit}
+\newcommand{\ZSFBuildID}{\ZSFBuildStamp-\ZSFGitCommit}
+
+% Sichtbarkeitsmodus B: sehr dezenter Marker (standardmaessig aktiv).
+\newif\ifZSFVisibleMarker
+\ZSFVisibleMarkertrue
+
+% XMP ist optional: wenn Paket fehlt, bleiben hyperref-Metadaten aktiv.
+\IfFileExists{hyperxmp.sty}{\RequirePackage{hyperxmp}}{}
+\RequirePackage{eso-pic}
+
+\author{\ZSFOwnerNameASCII}
+\title{ZSF Physik}
+\ifdefined\Author
+  \Author{\ZSFOwnerNameASCII}
+\fi
+\ifdefined\Title
+  \Title{ZSF Physik}
+\fi
+\ifdefined\Subject
+  \Subject{Originalfassung; owner=\ZSFOwnerID; release=\ZSFReleaseID}
+\fi
+\ifdefined\Keywords
+  \Keywords{owner-name:\ZSFOwnerNameASCII, owner-id:\ZSFOwnerID, release-id:\ZSFReleaseID, build-id:\ZSFBuildID}
+\fi
+
+\hypersetup{
+  pdftitle={ZSF Physik},
+  pdfauthor={\ZSFOwnerNameASCII},
+  pdfsubject={Originalfassung; owner=\ZSFOwnerID; release=\ZSFReleaseID},
+  pdfkeywords={owner-name:\ZSFOwnerNameASCII, owner-id:\ZSFOwnerID, release-id:\ZSFReleaseID, build-id:\ZSFBuildID},
+  pdfcreator={LaTeX},
+  pdfproducer={latexmk}
+}
+
+\AtBeginDocument{
+  % Low-level pdfinfo fallback: stabil bei Toolchains, die Author/Keywords sonst verwerfen.
+  \pdfinfo{
+    /Author (\ZSFOwnerNameASCII)
+    /Title (ZSF Physik)
+    /Subject (Originalfassung; owner=\ZSFOwnerID; release=\ZSFReleaseID)
+    /Keywords (owner-name:\ZSFOwnerNameASCII, owner-id:\ZSFOwnerID, release-id:\ZSFReleaseID, build-id:\ZSFBuildID)
+  }
+  \ifZSFVisibleMarker
+    % Unten links auf Seite 1, extrem dezent; beeinflusst den Textfluss nicht.
+    \AddToHook{shipout/firstpage}{
+      \AtPageLowerLeft{
+        \raisebox{2mm}[0pt][0pt]{%
+          \makebox[0pt][l]{%
+            \hspace{2mm}%
+            {\color[gray]{0.90}\fontsize{4}{4}\selectfont
+            id:\ZSFOwnerID\space|\space rel:\ZSFReleaseID}%
+          }%
+        }%
+      }%
+    }
+  \fi
+}

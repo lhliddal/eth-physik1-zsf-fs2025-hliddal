@@ -1,0 +1,160 @@
+% !TEX root = ../main.tex
+% SECTION 3: KAPAZITÄT UND DIELEKTRIKA
+% ============================================================
+
+\StartChapter{Kapazität und Dielektrika}
+
+\begin{runintext}
+Formeln zu \ZSFkeyword{Kapazitäten} und \ZSFkeyword{Dielektrika}: Definition der Kapazität, typische Geometrien (Platte, Zylinder, Kugel), gespeicherte Energie und \ZSFkeyword{Energiedichte}, \ZSFkeyword{Reihen-} und \ZSFkeyword{Parallelschaltungen} sowie Einfluss von Dielektrika. Nützlich bei Aufgaben zu \ZSFkeyword{Kondensatoren}, Energiespeicherung, Schaltungen und Feldänderungen durch Materialeinbau.
+\end{runintext}
+
+\SubsectionBar[sec:3-1]{Kapazität}
+\begin{runintext}
+Grundformeln für Spannung und \ZSFkeyword{Kapazität} von \ZSFkeyword{Kondensatoren}; nützlich, wenn aus Ladung und Spannung die Kapazität oder umgekehrt gesucht ist.
+\end{runintext}
+\begin{defbox}[Kondensator]
+Zwei \ZSFkeyword{isolierte Leiter} mit gleich großer, entgegengesetzter Ladung; speichert Ladung und Energie.
+\end{defbox}
+\begin{formulabox}
+\[ U = \varphi_b - \varphi_a \quad \text{Spannung} \]
+\formulasep
+\[ C = \frac{q}{U} \quad \text{Kapazität} \]
+\formulanote{Zweck: Spannung zwischen Leitern; Definition Kapazität (Ladung pro Spannung).}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Einzelleiter}: $q$ Gesamtladung, $U$ gegen Unendlich. \ZSFkeyword{Kondensator}: $q$ Ladung auf einem Leiter, $U$ zwischen den Leitern.
+\end{runintext}
+
+\ZSFfig{graphics/kondensator_grafik.png}{Kondensator mit Spannungsquelle}{Ladung $q$ proportional zur Spannung $U$: $C=q/U$}
+
+\SubsectionBar[sec:3-2]{Energie Kondensator}
+\begin{runintext}
+Formeln für Energie und \ZSFkeyword{Energiedichte} im Kondensatorfeld; nützlich bei Energiespeicher-Aufgaben und Feldstärkeabschätzungen.
+\end{runintext}
+\begin{formulabox}
+\[ E_{\mathrm{el}} = \frac{1}{2}\,qU = \frac{q^2}{2C} = \frac{1}{2}\,CU^2 \]
+\formulanote{Zweck: Im Kondensator gespeicherte Energie.}
+\formulasep
+\[ w_{\mathrm{el}} = \frac{1}{2}\,\varepsilon_0 E^2 \quad \text{Energiedichte} \]
+\[ E_{\mathrm{el}} = w_{\mathrm{el}}\,V \quad \text{(homogenes Feld)} \]
+\formulanote{Zweck: Elektrische Energiedichte im Feld; Gesamtenergie bei homogenem Feld über Volumen $V$.}
+\end{formulabox}
+
+\SubsectionBar[sec:3-3]{Platte, Zylinder, Kugel}
+\begin{runintext}
+Spezielle Kapazitäten typischer Geometrien; brauchst du bei Aufgaben zu einzelnen realen Kondensatoren (\ZSFkeyword{Platte}, \ZSFkeyword{Koaxkabel}, \ZSFkeyword{Kugel}).
+\end{runintext}
+
+\begin{defbox}[Plattenkondensator (Fläche $A$, Abstand $d$)]
+\begin{splitbox}[0.3]
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/Elektrotechnik_Plattenkondensator_Dielektrikum_Modell.png}
+    \tcblower
+    \begin{formulabox}
+        \textVorFormel{E-Feld (homogen):}
+        $E = \frac{U}{d}$\par
+        \tcbline
+        \textVorFormel{Kapazität:}
+        $C = \frac{\varepsilon_0\,A}{d}$
+    \end{formulabox}
+\end{splitbox}
+\end{defbox}
+
+\begin{defbox}[Zylinderkondensator (Länge $\ell$, $r_2>r_1$)]
+\begin{splitbox}[0.3]
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/Physik_Koaxialleiter_Dielektrikum_Epsilon_r.png}
+    \tcblower
+    \begin{formulabox}
+        \textVorFormel{Kapazität:}
+        $C = \frac{2\pi\varepsilon_0\,\ell}{\ln(r_2/r_1)}$\par
+        \tcbline
+        \textVorFormel{E-Feld (radial):}
+        $E(r) = \frac{U}{r\,\ln(r_2/r_1)}$
+    \end{formulabox}
+\end{splitbox}
+\end{defbox}
+
+\begin{defbox}[Kugelkondensator (konz.\ Sphären, $r_1<r_2$)]
+\begin{splitbox}[0.3]
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/Physik_Konzentrische_Sphaeren_Dielektrikum_Epsilon_r.png}
+    \tcblower
+    \begin{formulabox}
+        \textVorFormel{Kapazität:}
+        $C = 4\pi\varepsilon_0\,\frac{r_1\,r_2}{r_2 - r_1}$\par
+        \tcbline
+        \textVorFormel{Einzelkugel (Grenzfall $r_2\to\infty$):}
+        $C = 4\pi\varepsilon_0\,r$
+    \end{formulabox}
+\end{splitbox}
+\end{defbox}
+
+\begin{minipage}{\linewidth}
+\SubsectionBar[sec:3-4]{Reihenschaltung}
+\begin{runintext}
+Ersatzkapazität bei \ZSFkeyword{Serie}. Gleiche Ladung, Spannungen addieren sich (\ZSFkeyword{Maschenregel} $\sum U_k = 0$).
+\end{runintext}
+\begin{defbox}[Serienschaltung]
+\begin{splitbox}[0.45]
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/kondensatorserie.png}
+    \tcblower
+    \begin{formulabox}
+        \[ \frac{1}{C_{\mathrm{tot}}} = \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + \cdots \]
+        \formulasep
+        \[ U_{\mathrm{tot}} = U_1 + U_2 + U_3 + \cdots \]
+        \[ U_k = \frac{C_{\mathrm{tot}}}{C_k} \cdot U_{\mathrm{tot}} \]
+        \[ I = I_1 = I_2 = I_3 \]
+        \[ Q = Q_1 = Q_2 = Q_3 \]
+    \end{formulabox}
+\end{splitbox}
+\formulanote{Gleiche Ladung $Q$ auf allen Kondensatoren. Reihe: Trennt weniger Ladung, da sich Plattenabstände addieren.}
+\end{defbox}
+\end{minipage}
+
+\ZSFSectionGap
+
+\begin{minipage}{\linewidth}
+\SubsectionBar*[sec:3-4-2]{Parallelschaltung}
+\begin{runintext}
+Ersatzkapazität bei \ZSFkeyword{Parallel}. Gleicher Spannungsabfall, Ladungen addieren sich.
+\end{runintext}
+\begin{defbox}[Parallelschaltung]
+\begin{splitbox}[0.45]
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/kondensatorparallel.png}
+    \tcblower
+    \begin{formulabox}
+        \[ C_{\mathrm{tot}} = C_1 + C_2 + C_3 + \cdots \]
+        \formulasep
+        \[ U_{\mathrm{tot}} = U_1 = U_2 = U_3 = \cdots \]
+        \[ I_{\mathrm{tot}} = I_1 + I_2 + I_3 \]
+        \[ Q_{\mathrm{tot}} = Q_1 + Q_2 + Q_3 + \cdots \]
+    \end{formulabox}
+\end{splitbox}
+\formulanote{Gleiche Spannung $U$ an allen Kondensatoren. Parallel: Trennt mehr Ladung, da sich Plattenflächen addieren.}
+\end{defbox}
+\end{minipage}
+
+\SubsectionBar[sec:3-5]{Dielektrika}
+\begin{runintext}
+Formeln, wie isolierende Materialien (\ZSFkeyword{Dielektrika}) das Feld und die Kapazität verändern; nützlich beim Einbau von Medien zwischen Platten.
+\end{runintext}
+\begin{formulabox}
+\[ C = \varepsilon_{\mathrm{rel}} C_0 \]
+\[ \varepsilon = \varepsilon_{\mathrm{rel}}\varepsilon_0 \]
+\formulasep
+\[ \vec{D} = \varepsilon_{\mathrm{rel}}\varepsilon_0 \vec{E} \quad \text{Elektrische Verschiebungsdichte} \]
+\formulanote{Zweck: Kapazitätserhöhung durch Dielektrikum; Permittivität; Verschiebungsdichte.}
+\end{formulabox}
+\begin{defbox}[Verhalten beim Einschub eines Dielektrikums]
+\textbf{Mit Spannungsquelle (Trafo / Batterie angeschlossen):}\\
+Spannung $U$ bleibt konstant. $C$ steigt proportional zu $\varepsilon_{\mathrm{rel}}$. Damit fliesst Ladung nach ($q$ steigt). E-Feld $\vec{E}$ bleibt konstant ($E = U/d$).\\[2pt]
+\textbf{Ohne Spannungsquelle (Kondensator isoliert):}\\
+Ladung $q$ bleibt konstant (kann nicht ab- oder zufliessen). $C$ steigt. Spannung $U$ sinkt ($U=q/C$), und das E-Feld sinkt proportional ($E = E_0 / \varepsilon_{\mathrm{rel}}$).
+\end{defbox}
+\begin{runintext}
+Mikroskopisch: \ZSFkeyword{Dipole} richten sich aus, erzeugen Gegenfeld. Anwendung: höhere Kapazität, \ZSFkeyword{Durchschlagfestigkeit}, mechanische Trennung.
+\end{runintext}
+
+\ZSFfig{graphics/Kondensator_mit_und_ohne_Dielektrikum.jpg}{Mit/ohne Dielektrikum}{Polarisierte Dipole schwächen $\vec{E}$ im Inneren}
+
+% ============================================================

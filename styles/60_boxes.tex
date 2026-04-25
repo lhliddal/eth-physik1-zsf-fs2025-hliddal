@@ -1,0 +1,326 @@
+% ============================================================
+% 60_boxes.tex — tcolorbox-Stile, Balken, Boxen, Formelnoten
+% ============================================================
+
+\newcommand{\BreakIfNotEnoughSpace}{%
+  \par\penalty0\vspace{0pt plus \ZSFbreakThreshold}\penalty-100\vspace{0pt plus -\ZSFbreakThreshold}\relax
+}
+\newcommand{\BreakIfNotEnoughSpaceChapter}{%
+  \par\penalty0\vspace{0pt plus \ZSFbreakThresholdChapter}\penalty-100\vspace{0pt plus -\ZSFbreakThresholdChapter}\relax
+}
+
+% ------------------------------------------------------------
+% Chapter-Bar
+% ------------------------------------------------------------
+\newtcolorbox{chapterbar}[1][]{
+  enhanced jigsaw,
+  breakable=false,
+  colback=\ChapterBarColor,
+  colframe=\ChapterBarColor,
+  boxrule=0pt,
+  boxsep=0pt,
+  left=\ZSFspaceM,
+  right=\ZSFspaceM,
+  top=\ZSFspaceM,
+  bottom=\ZSFspaceM,
+  before skip=16pt,
+  after skip=\ZSFspaceS,
+  fontupper=\ZSFfontChapter,
+  #1
+}
+\newcommand{\ChapterBar}[1]{
+  \BreakIfNotEnoughSpaceChapter
+  \penalty-500
+  \begin{chapterbar}
+    \textcolor{white}{#1}
+  \end{chapterbar}
+  \penalty10000
+}
+
+% ------------------------------------------------------------
+% Dokument-Titel-Masthead (einmalig, vor dem Frontchapter)
+% ------------------------------------------------------------
+% Kompakter zweireihiger Titelblock in ETH-Rot (ChapterColor0), der
+% optisch mit der Frontchapter-Bar zusammenspielt: grosse Zeile =
+% Fach/Thema, kleinere kursive Zeile = Autor*in. Einsatz NUR einmal
+% ganz oben im Dokument, direkt vor \StartFrontChapter.
+\newtcolorbox{zsftitleheader}[1][]{
+  enhanced jigsaw,
+  breakable=false,
+  colback=ChapterColor0,
+  colframe=ChapterColor0,
+  boxrule=0pt,
+  boxsep=0pt,
+  left=\ZSFspaceM,
+  right=\ZSFspaceM,
+  top=\ZSFspaceS,
+  bottom=\ZSFspaceS,
+  before skip=0pt,
+  after skip=\ZSFspaceXS,
+  halign=center,
+  #1
+}
+\newcommand{\ZSFTitleHeader}[2]{%
+  \penalty-500
+  \begin{zsftitleheader}
+    \sffamily
+    {\color{white}\fontsize{11bp}{12.5bp}\bfseries\selectfont #1\par}%
+    \vspace{1pt}%
+    {\color{white!88}\fontsize{6.7bp}{7.5bp}\itshape\selectfont von~#2\par}%
+  \end{zsftitleheader}
+  \penalty10000
+}
+
+% ------------------------------------------------------------
+% Subsection-Bar (+ numberless Star-Variante)
+% ------------------------------------------------------------
+\newtcolorbox{subsectionbar}[1][]{
+  enhanced jigsaw,
+  breakable=false,
+  colback=\SubsectionBarColor,
+  colframe=\SubsectionBarColor,
+  boxrule=0pt,
+  boxsep=0pt,
+  left=\ZSFspaceM,
+  right=\ZSFspaceM,
+  top=\ZSFspaceM,
+  bottom=\ZSFspaceM,
+  before skip=12pt,
+  after skip=\ZSFspaceS,
+  fontupper=\ZSFfontSection,
+  #1
+}
+\makeatletter
+\newcommand{\SubsectionBar}{\@ifstar{\SubsectionBarStar}{\SubsectionBarNumbered}}
+\newcommand{\SubsectionBarNumbered}[2][]{
+  \BreakIfNotEnoughSpace
+  \penalty-500
+  \refstepcounter{subsection}
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  \begin{subsectionbar}
+    \textcolor{white}{\thesubsection. #2}
+  \end{subsectionbar}
+  \penalty10000
+}
+\newcommand{\SubsectionBarStar}[2][]{
+  \BreakIfNotEnoughSpace
+  \penalty-500
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  \begin{subsectionbar}
+    \textcolor{white}{#2}
+  \end{subsectionbar}
+  \penalty10000
+}
+\makeatother
+
+% ------------------------------------------------------------
+% Gemeinsamer Basis-Stil für alle Titelbalken (wie Analysis)
+% ------------------------------------------------------------
+\tcbset{zsftitlebar/.style={
+  fonttitle=\ZSFfontBoxTitle\strut,
+  halign title=center,
+  title style={minimum height=\ZSFtitleBarHeight},
+  lefttitle=0pt,
+  righttitle=0pt,
+  toptitle=\ZSFspaceXS,
+  bottomtitle=\ZSFspaceXS,
+  before title={},
+  after title={},
+}}
+
+% ------------------------------------------------------------
+% Basis-Stil: Titelboxen (defbox, tablebox, figbox, warnbox)
+% ------------------------------------------------------------
+% WICHTIG — Single Point of Truth fuer innere Padding:
+% left/right/top/bottom werden HIER im Basis-Stil gesetzt, nicht in
+% den einzelnen \newtcolorbox-Definitionen. Damit ist garantiert,
+% dass \linewidth innerhalb JEDER Titelbox identisch ist — also auch
+% \tabularx{\linewidth}{...} aus styles/20_tables.tex in allen Boxen
+% auf dieselbe Breite kommt. Ohne diese Zentralisierung erben
+% tablebox/figbox die tcolorbox-Defaults (~4mm) waehrend defbox 4pt
+% setzt, was zu unterschiedlichen Tabellen-Breiten fuehrt.
+\tcbset{zsftitlebox/.style={
+  enhanced jigsaw,
+  unbreakable,
+  colback=\BoxBackColor,
+  colbacktitle=\BoxTitleColor,
+  colframe=\BoxFrameColor,
+  coltitle=\BoxTitleTextColor,
+  boxrule=0.5pt,
+  titlerule=0pt,
+  boxsep=0pt,
+  left=\ZSFspaceM,
+  right=\ZSFspaceM,
+  top=\ZSFspaceM,
+  bottom=\ZSFspaceM,
+  before skip=\ZSFtitleboxBeforeSkip,
+  after skip=\ZSFspaceS,
+  before upper={\parskip=\ZSFspaceS\relax\ZSFReadableAuto},
+  zsftitlebar,
+}}
+
+\newtcolorbox{defbox}[1][]{zsftitlebox, title={#1}}
+\newtcolorbox{tablebox}[1][]{zsftitlebox, title={#1}}
+% figbox: Grafik-Titelbox. Top/Bottom werden gegenüber defbox/tablebox
+% reduziert (\ZSFspaceS statt \ZSFspaceM) — Bilder bringen visuell
+% schon eigene Ränder mit; weniger Innenpadding spart Platz.
+\newtcolorbox{figbox}[1][]{%
+  zsftitlebox,
+  title={#1},
+  toptitle=\ZSFspaceS,
+  top=\ZSFspaceS,
+  bottom=\ZSFspaceS,
+}
+
+% ------------------------------------------------------------
+% Formula-Box + Longformula
+% ------------------------------------------------------------
+\newenvironment{longformula}{\[\begin{aligned}}{\end{aligned}\]}
+\newtcolorbox{formulabox}{
+  enhanced jigsaw,
+  unbreakable,
+  colback=\FormulaboxBackColor,
+  colframe=black,
+  boxrule=0.5pt,
+  boxsep=0pt,
+  left=\ZSFspaceM,
+  right=\ZSFspaceM,
+  top=\ZSFspaceM,
+  bottom=\ZSFspaceM,
+  before skip=\ZSFspaceS,
+  after skip=\ZSFspaceS,
+  before upper={\parskip=\ZSFspaceS\centering},
+  after upper={\par},
+  middle=\ZSFspaceSep,
+}
+
+% Dünne, graue Trennlinie für gestapelte Formeln in einer formulabox.
+% Einsatz: zwischen zwei \[ ... \] innerhalb derselben formulabox.
+\newcommand{\formulasep}{%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceSep}%
+  \noindent\textcolor{black!30}{\rule{\linewidth}{0.5pt}}%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceSep}%
+  \penalty-50%
+}
+
+% Zentriertes Item-Heading mit Trennstrich — für Listen gleichwertiger
+% Teilaspekte (z. B. Fälle, Varianten) innerhalb einer Box.
+\newcommand{\ZSFItemHeading}[1]{%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceM}%
+  {\centering\textbf{#1}\par}\vspace{-\parskip}\vspace{\ZSFspaceS}%
+  \noindent\rule{\linewidth}{0.5pt}\par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+}
+
+\newcommand{\formulanote}[1]{%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+  \noindent{{\ZSFfontNote #1}}%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+}
+\newcommand{\formulanoteabove}[1]{%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+  \noindent{{\ZSFfontNote #1}}%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+}
+
+% ------------------------------------------------------------
+% Warn-Box (rot, Physik-spezifisch)
+% ------------------------------------------------------------
+\newtcolorbox{warnbox}[1][Achtung]{
+  zsftitlebox,
+  colback=WarnboxBack,
+  colbacktitle=ETHRot,
+  coltitle=white,
+  title=#1,
+}
+
+% ------------------------------------------------------------
+% Runintext + Grafik-Platzhalter
+% ------------------------------------------------------------
+\newenvironment{runintext}{\par\addvspace{\ZSFspaceS}\noindent\ZSFReadableAuto\ignorespaces}{\par}
+
+\newcommand{\PlaceholderGraphic}[1]{
+  \fbox{\parbox{0.9\linewidth}{\centering\small [Grafik: #1]}}
+}
+
+% ------------------------------------------------------------
+% Grafik-Helpers — einheitliche Einbindung von Bildern in figboxen.
+% ------------------------------------------------------------
+% \ZSFfigcaption{...} — dezente Bildunterschrift unter einem Bild.
+% Leerer Text wird komplett weggelassen (kein Zusatzabstand).
+% Style: \ZSFfontNote (sffamily italic 6.7bp) + dezenter Grauton.
+% Manuelle Nutzung möglich, wird aber i.d.R. von \ZSFfig gerufen.
+\newcommand{\ZSFfigcaption}[1]{%
+  \if\relax\detokenize{#1}\relax\else
+    \par\vspace{\ZSFspaceXS}%
+    {\ZSFfontNote\color{black!60}#1\par}%
+  \fi
+}
+
+% \ZSFfig{graphics/foo.png}{Titel}{Kurzbeschreibung}
+% Ein-Zeilen-Ersatz für das wiederkehrende Muster
+%   \begin{figbox}[Titel]\centering\includegraphics[...]{...}\end{figbox}
+% Vorteile:
+%   * Einheitliche Max-Grösse via \ZSFfigMaxHeight (verhindert, dass
+%     hohe Bilder "overkill" Platz einnehmen).
+%   * Optionale Bildunterschrift über den 3. Parameter.
+%     Leere Beschreibung ({}) → keine Caption, kein Zusatzabstand.
+% Hinweis: Titel mit Kommata oder Math-Mode bitte in {...} wrappen,
+%   z.B. \ZSFfig{pfad}{{Sinus U(t), I(t)}}{...}
+\newcommand{\ZSFfig}[3]{%
+  \begin{figbox}[{#2}]%
+    \centering
+    \includegraphics[width=\linewidth,height=\ZSFfigMaxHeight,keepaspectratio]{#1}%
+    \ZSFfigcaption{#3}%
+  \end{figbox}%
+}
+
+% \ZSFfigside{graphics/foo.png}{Titel}{Rechte Seite}
+% Zweispalten-Variante zu \ZSFfig: Bild links (ca. 30%), Inhalt rechts
+% (ca. 66%), beide vertikal zentriert. Für platzsparende Reihen
+% ähnlicher Objekte (z.B. Kondensator-Geometrien, ebene Kurven).
+%
+% Der rechte Content darf frei strukturiert werden:
+%   * Formeln als \[ ... \]
+%   * Bold-Labels via \textVorFormel{Kapazität:}
+%   * Trennlinie zwischen Sektionen via \formulasep
+%   * Kleine Fussnote via \formulanote{...}
+%   * Freier Fliesstext (\small für kompakt)
+%
+% Beispiel:
+%   \ZSFfigside{graphics/bar.png}{Plattenkondensator}{%
+%     \textVorFormel{E-Feld:}
+%     \[ E = U/d \]
+%     \formulasep
+%     \textVorFormel{Kapazität:}
+%     \[ C = \varepsilon_0 A/d \]
+%   }
+\newlength{\ZSFfigsideImgWidth}\setlength{\ZSFfigsideImgWidth}{0.30\linewidth}
+\newlength{\ZSFfigsideTextWidth}\setlength{\ZSFfigsideTextWidth}{0.66\linewidth}
+\newcommand{\ZSFfigside}[3]{%
+  \begin{figbox}[{#2}]%
+    \noindent
+    \begin{minipage}[c]{\ZSFfigsideImgWidth}%
+      \centering
+      \includegraphics[width=\linewidth,height=\ZSFfigMaxHeight,keepaspectratio]{#1}%
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{\ZSFfigsideTextWidth}%
+      \raggedright
+      #3%
+    \end{minipage}%
+    \par
+  \end{figbox}%
+}
+
+% --- Nebenläufiges Bild/Text-Layout (für "Ebene Kurven", Tabellen mit Bildern etc.) ---
+\newtcolorbox{splitbox}[1][0.3]{
+  blankest,
+  sidebyside,
+  sidebyside align=top,
+  sidebyside gap=\ZSFspaceM,
+  lefthand width=#1\linewidth,
+  lower separated=false,
+  before skip=\ZSFspaceS,
+  after skip=\ZSFspaceS,
+  boxsep=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt
+}

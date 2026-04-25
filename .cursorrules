@@ -1,0 +1,77 @@
+# Cursor Rules — ZSF_Physik_V3
+
+Dieses Projekt ist strikt modular. Halte dich an folgende Regeln.
+
+## Datei-Platzierung
+
+**Root-Verzeichnis ist tabu für neue Dateien.** Erlaubt im Root sind NUR:
+- `main.tex`, `preamble.tex`
+- `Makefile`, `.gitignore`, `.latexindent.yaml`, `.pre-commit-config.yaml`, `.cursorrules`
+- `MODULAR_SYSTEM.md`, `README.md`
+
+Alles andere gehört in einen der folgenden Ordner:
+- **`chapters/`** — Physik-Inhalt (ch00..ch11_*.tex)
+- **`styles/`** — Layout/Farben/Boxen/Macros (modular nummeriert 00..70)
+- **`tests/`** — Lint- und Check-Skripte (`check_*.sh`, `run_test.sh`), Standalone-Testdokumente
+- **`scripts/`** — Helfer-Scripts (Python/Shell für Farbgenerierung etc.)
+- **`graphics/`** — Bilddateien
+- **`_scratch/`** — Scratch/Debug/Experimente. Ist gitignored. Nutze diesen Ordner für alles Temporäre.
+
+## Verbot
+
+- Keine Test-`.tex` im Root — gehört nach `tests/`.
+- Keine `debug_*.tex`, `tmp_*.tex`, `foo.tex` — gehört nach `_scratch/`.
+- Keine `.md`-Notizen im Root außer `README.md` und `MODULAR_SYSTEM.md`.
+- Keine `.bak`-Dateien committen.
+- Wenn unsicher wohin → `_scratch/`.
+
+## Layout-Änderungen
+
+Bei Layout/Spacing/Farben: nur `styles/*.tex` anfassen, niemals `preamble.tex` (ist nur Loader) und niemals Kapitel.
+
+## Spacing in Kapiteln
+
+- Kein direktes `\vspace{…}` / `\hspace{…}` / `\newpage`.
+- Nutze: `\ZSFgapXS/S/M/L`, `\ZSFSectionGap`, `\ZSFtabColGap` (definiert in `styles/30_layout_spacing.tex`).
+- Neue Spacing-Macros: in `30_layout_spacing.tex` ergänzen.
+
+## Pre-commit
+
+`./tests/check_root_clean.sh` läuft bei jedem Commit und blockt unerwartete Root-Dateien. Respektiere das — nicht umgehen.
+
+## Workflow
+
+```
+make build            # latexmk → build/main.pdf
+make check            # alle Checks (main-full, chapter-rules, root-clean, lint)
+make clean            # build/ + aux entfernen
+```
+
+## PDF-Namenskonvention
+
+- Standard-Ausgabe im Root folgt dem Muster: `fach_semester_hliddal.pdf`.
+- Aktueller Standardname: `physik1_fs2025_hliddal.pdf`.
+- Beispiel-Muster: `mathe2_hs2025_hliddal.pdf`, `physik1_fs2025_hliddal.pdf`.
+
+## Agent-Build-Pflicht
+
+Nach **jeder** inhaltlichen oder Layout-Änderung durch die KI sofort bauen, damit die
+aktuelle Root-PDF (`fach_semester_hliddal.pdf`) direkt aktualisiert wird und Fehler früh
+sichtbar sind. Standardkommando:
+
+```
+make build
+```
+
+## Formel-Referenzen in Antworten
+
+- Wenn Formeln genannt oder erklärt werden, immer das **genaue Kapitel** angeben (z. B. `chapters/ch07_wechselstrom.tex`).
+- Wenn möglich zusätzlich den konkreten Kontext nennen (Abschnitt/Thema innerhalb des Kapitels), damit die Stelle direkt auffindbar ist.
+
+## Keyword-Hervorhebung
+
+Fachbegriffe im Fliesstext werden ausschliesslich mit `\ZSFkeyword{...}` ausgezeichnet
+(definiert in `styles/50_typography_semantics.tex`). Regeln und Dichte-Richtwerte siehe
+`MODULAR_SYSTEM.md` §7. Kein manuelles `\textbf{...}` für Fachbegriffe in Kapiteln;
+`\textbf{...}` bleibt strukturellen Markierungen vorbehalten (z. B. Label innerhalb einer
+`defbox` wie "Mit Spannungsquelle:").

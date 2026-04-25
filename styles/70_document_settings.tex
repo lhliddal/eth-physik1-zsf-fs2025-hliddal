@@ -1,0 +1,23 @@
+% ============================================================
+% 70_document_settings.tex — Finale Dokument-Einstellungen
+% ============================================================
+% Hinweis: hyperref wird bereits in 00_packages.tex geladen.
+
+\hypersetup{colorlinks=true, linkcolor=PaletteElektro, urlcolor=PaletteMagneto}
+
+% Enge Math-Display-Abstände (wie Analysis: keine grossen Lücken um Formeln)
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{\ZSFspaceXS}
+  \setlength{\belowdisplayskip}{\ZSFspaceXS}
+  \setlength{\abovedisplayshortskip}{\ZSFspaceXS}
+  \setlength{\belowdisplayshortskip}{\ZSFspaceXS}
+  \setlength{\mathsurround}{\ZSFspaceXS}
+}
+
+% Kompakte Listen (wie Analysis: kein überschüssiges Whitespace)
+\setlist{nosep, itemsep=0pt, parsep=0pt, topsep=\ZSFspaceXS, partopsep=0pt}
+\setlist[itemize]{leftmargin=3mm}
+\setlist[enumerate]{leftmargin=4mm}
+
+% Tabellen-Zellenabstand einheitlich
+\setlength{\tabcolsep}{\ZSFspaceM}

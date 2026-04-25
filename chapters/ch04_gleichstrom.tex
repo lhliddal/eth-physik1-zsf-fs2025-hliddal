@@ -1,0 +1,133 @@
+% !TEX root = ../main.tex
+% SECTION 4: GLEICHSTROMKREISE
+% ============================================================
+
+\StartChapter{Gleichstromkreise}
+
+\begin{runintext}
+Formeln zu Strömen und Spannungen in Gleichstromschaltungen: Definition von \ZSFkeyword{Strom} und \ZSFkeyword{Stromdichte}, \ZSFkeyword{Ohm'sches Gesetz}, Widerstände, Leistung, reale Spannungsquellen, \ZSFkeyword{Kirchhoff-Regeln}, Ersatzwiderstände und \ZSFkeyword{RC-Zeitkonstanten}. Nützlich bei allen Aufgaben zu einfachen und zusammengesetzten Gleichstromkreisen, Messgeräten und Ent- bzw.\ Aufladung von Kondensatoren.
+\end{runintext}
+
+\SubsectionBar[sec:4-1]{Strom, Drift}
+\begin{runintext}
+Zusammenhänge zwischen \ZSFkeyword{mikroskopischer Ladungsbewegung} und makroskopischem Strom; wichtig für das Verständnis des Ladungstransports.
+\end{runintext}
+\begin{defbox}[Elektrischer Strom]
+Rate des \ZSFkeyword{Ladungsflusses} durch Querschnittsfläche.
+\end{defbox}
+\begin{formulabox}
+\begin{longformula}
+I = \frac{\Delta q}{\Delta t} \quad \text{mit } q = N e \quad\Rightarrow\quad \frac{\Delta N}{\Delta t} = \frac{I}{e}
+\end{longformula}
+\formulanote{Zweck: Definition Strom (Ladungsfluss pro Zeit) \& Teilchenrate.}
+\formulasep
+\[ I = q\,(n/V)\,A\,v_{\mathrm{d}} \quad \text{($q=-e$ für Elektronen)} \]
+\[ \vec{\jmath} = q\,(n/V)\,\vec{v}_{\mathrm{d}} \quad \text{Stromdichte} \]
+\formulanote{Zweck: Strom und Stromdichte über Driftgeschwindigkeit.}
+\end{formulabox}
+\begin{runintext}
+$N$: Anzahl Ladungsträger, $e$: \ZSFkeyword{Elementarladung}, $n/V$: Anzahldichte, $A$: Querschnitt, $v_{\mathrm{d}}$: \ZSFkeyword{Driftgeschwindigkeit}. $I$ = Fluss von $\vec{\jmath}$ durch Fläche.
+\end{runintext}
+
+\SubsectionBar[sec:4-2]{Ohm}
+\begin{runintext}
+Das \ZSFkeyword{Ohm'sche Gesetz} und die Berechnung von Widerständen aus Materialeigenschaften; zentral für die Analyse von Stromkreisen.
+\end{runintext}
+\begin{formulabox}
+\[ R = \frac{U}{I} \]
+\[ U = R\,I \quad \text{($R$ konstant)} \]
+\formulasep
+\[ R = \rho\,\frac{\ell}{A} \quad \text{spezifischer Widerstand $\rho$} \]
+\formulasep
+\[ \alpha = \frac{(\rho-\rho_0)/\rho_0}{T-T_0} \quad \text{Temperaturkoeffizient} \]
+\formulanote{Zweck: Ohm'sches Gesetz; Widerstand aus Geometrie und Material; Temperaturabhängigkeit.}
+\end{formulabox}
+
+\SubsectionBar[sec:4-3]{Leistung}
+\begin{runintext}
+Berechnung von \ZSFkeyword{elektrischer Leistung} und umgesetzter Energie; grundlegend für Leistungsbilanzen und Erwärmung von Bauteilen.
+\end{runintext}
+\begin{formulabox}
+\[ P = \frac{\mathrm{d}E}{\mathrm{d}t} \quad \text{allgemeine Definition} \]
+\[ P = I\,U \quad \text{Bauelement} \]
+\formulasep
+\[ P = I\,U_R = R\,I^2 = \frac{U^2}{R} \quad \text{am Widerstand} \]
+\formulasep
+\[ P = I\,U_Q \quad \text{Spannungsquelle} \]
+\[ E_{\mathrm{el}} = q\,U_Q \quad \text{gespeicherte Energie Batterie} \]
+\formulanote{Zweck: Elektrische Leistung (allgemein, am Widerstand, an Quelle); gespeicherte Energie.}
+\end{formulabox}
+
+\begin{minipage}{\linewidth}
+\SubsectionBar[sec:4-4-1]{Knotenregel}
+\begin{runintext}
+Summe der zufließenden Ströme ist gleich der Summe der abfließenden Ströme an einer \ZSFkeyword{Verzweigung}.
+\end{runintext}
+\begin{defbox}[Knotenregel]
+\begin{splitbox}[0.4]
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/knotenregel.png}
+    \tcblower
+    \begin{formulabox}
+        \[ \sum I_{\mathrm{zu}} = \sum I_{\mathrm{ab}} \]
+    \end{formulabox}
+\end{splitbox}
+\formulanote{Strom $I_1$ teilt sich in $I_2$ und $I_3$ auf. \textbf{Zweck:} Strombilanz an Knotenpunkten im Netzwerk.}
+\end{defbox}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\SubsectionBar[sec:4-4-2]{Maschenregel}
+\begin{runintext}
+Die Summe aller Spannungsabfälle in einer geschlossenen Schleife (\ZSFkeyword{Masche}) ist null.
+\end{runintext}
+\begin{defbox}[Maschenregel]
+\begin{splitbox}[0.4]
+    \centering
+    \includegraphics[width=\linewidth, keepaspectratio]{graphics/maschenregel.png}
+    \tcblower
+    \begin{formulabox}
+        \[ \sum U_k = 0 \]
+        \formulasep
+        \[ \varphi_a - \varphi_b = U_Q - R_{\mathrm{in}}\,I \]
+    \end{formulabox}
+\end{splitbox}
+\formulanote{Summe aller Spannungen in geschlossener Schleife ist $0$. Masche: Spannungsabfall in Stromrichtung ist negativ. Reale Batterie: Klemmenspannung bei Innenwiderstand.}
+\end{defbox}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\SubsectionBar[sec:4-5]{Ersatzwiderstände}
+\begin{runintext}
+Regeln zur Kombination von \ZSFkeyword{in Reihe} und \ZSFkeyword{parallel} geschalteten Widerständen zur einfachen Reduktion von Teilschaltungen.
+\end{runintext}
+\begin{formulabox}
+\[ R = R_1 + R_2 + R_3 + \cdots \quad \text{Reihe} \]
+\formulasep
+\[ \frac{1}{R} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots \quad \text{Parallel} \]
+\[ R = \frac{R_1 R_2}{R_1 + R_2} \quad \text{2 Stück parallel} \]
+\formulanote{Zweck: Ersatzwiderstand Reihen- bzw.\ Parallelschaltung.}
+\end{formulabox}
+\end{minipage}
+
+\SubsectionBar[sec:4-6]{RC-Kreise}
+\begin{runintext}
+Zeitabhängiges Verhalten von Strom und Ladung beim \ZSFkeyword{Auf-} und \ZSFkeyword{Entladen} von Kondensatoren über Widerstände.
+\end{runintext}
+\begin{runintext}
+\ZSFkeyword{Amperemeter}: kleiner $R$, in Reihe. \ZSFkeyword{Voltmeter}: großer $R$, parallel. \ZSFkeyword{Ohmmeter}: Batterie + Galvanometer + $R$.
+\end{runintext}
+\begin{formulabox}
+\[ q(t) = q_0\,\mathrm{e}^{-t/(RC)} = q_0\,\mathrm{e}^{-t/\tau} \quad \text{Entladung} \]
+\[ I(t) = -\frac{\mathrm{d}q}{\mathrm{d}t} = \frac{U_{C,0}}{R}\,\mathrm{e}^{-t/\tau} = I_0\,\mathrm{e}^{-t/\tau} \]
+\formulasep
+\[ \tau = R\,C \quad \text{Zeitkonstante} \]
+\formulasep
+\[ q(t) = C\,U\,(1 - \mathrm{e}^{-t/\tau}) = q_E\,(1 - \mathrm{e}^{-t/\tau}) \quad \text{Aufladung} \]
+\[ I(t) = \frac{U}{R}\,\mathrm{e}^{-t/\tau} = I_0\,\mathrm{e}^{-t/\tau} \]
+\formulanote{Zweck: RC-Kreis Entladung/Aufladung; Zeitkonstante $\tau=RC$.}
+\end{formulabox}
+
+% ============================================================
+
+\ZSFfig{graphics/Kondensator_Lade_und_Entladekurve_Spannung_Strom.png}{Lade-/Entladekurve (RC)}{Exponentialverlauf $U_C(t)$ und $I(t)$ mit $\tau=RC$}

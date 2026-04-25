@@ -1,0 +1,23 @@
+defaultIndent: "  "
+removeTrailingWhitespace:
+  beforeProcessing: 1
+modifyLineBreaks:
+  preserveBlankLines: 1
+  condenseMultipleBlankLinesInto: 1
+verbatimEnvironments:
+  verbatim: 1
+  lstlisting: 1
+  minted: 1
+lookForAlignDelims:
+  tabular:
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 1
+    spacesAfterDoubleBackSlash: 1
+  tabularx:
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 1
+    spacesAfterDoubleBackSlash: 1
+  longtable:
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 1
+    spacesAfterDoubleBackSlash: 1

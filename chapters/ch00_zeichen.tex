@@ -1,0 +1,126 @@
+% !TEX root = ../main.tex
+% SECTION 0: ZEICHEN & EINHEITEN
+% ============================================================
+
+\ZSFTitleHeader{Physik~1 Zusammenfassung}{Loris Hliddal}
+\StartFrontChapter{Zeichen \& Einheiten (SI)}
+
+\begin{tablebox}[Zeichen — Bedeutung — SI]
+\begin{ZSFtable}[\ZSFfontTableDense]{Y{0.6} Y{1.55} Y{0.85}}
+\ZSFheaderRow \ZSFhead{Symbol} & \ZSFhead{Bedeutung} & \ZSFhead{SI-Einheit} \\
+$e$ & Elementarladung & \si{C} \\
+$q$, $Q$ & elektrische Ladung & \si{C} \\
+$\vec{E}$ & elektrische Feldstärke & \si{V/m} = \si{N/C} \\
+$\varphi$ & elektrisches Potenzial & \si{V} \\
+$U$ & Spannung, Potenzialdiff. & \si{V} \\
+$\Phi_{\mathrm{el}}$ & elektrischer Fluss & \si{N.m^2/C} \\
+$\varepsilon_0$ & Vakuumpermittivität & \si{C^2/(N.m^2)} \\
+$\varepsilon_{\mathrm{rel}}$, $\varepsilon$ & Permittivität (rel./abs.) & 1, \si{F/m} \\
+$\vec{p}$ & elektrisches Dipolmoment & \si{C.m} \\
+$C$ & Kapazität & \si{F} \\
+$R$ & elektrischer Widerstand & \si{\ohm} \\
+$I$ & elektrischer Strom & \si{A} \\
+$\vec{\jmath}$ & Stromdichte & \si{A/m^2} \\
+$\rho$ & spez. Widerstand (oder Ladungsdichte) & \si{\ohm.m} bzw.\ \si{C/m^3} \\
+$\sigma$ & Flächenladungsdichte (oder Leitfähigkeit) & \si{C/m^2} \\
+$P$ & elektrische Leistung & \si{W} \\
+$E_{\mathrm{el}}$ & elektrische Energie & \si{J} \\
+$W$ & Arbeit (Energie\-übertrag) & \si{J} \\
+$\vec{F}$ & Kraft & \si{N} \\
+$\vec{B}$ & magnetische Flussdichte & \si{T} \\
+$\Phi_{\mathrm{mag}}$ & magnetischer Fluss (pro Windung; Spule: $n\,\Phi_{\mathrm{mag}}$) & \si{Wb} = \si{T.m^2} \\
+$\mu_0$ & Vakuumpermeabilität & \si{H/m} = \si{T.m/A} \\
+$\vec{\mu}$ & magnetisches Dipolmoment & \si{A.m^2} \\
+$\vec{M}$ & Drehmoment (oder Magnetisierung) & \si{N.m} bzw.\ \si{A/m} \\
+$L$ & Induktivität & \si{H} \\
+$M$ & Gegeninduktivität & \si{H} \\
+$U_{\mathrm{ind}}$ & induzierte Spannung & \si{V} \\
+$X_L$, $X_C$ & Blindwiderstand (ind./kap.) & \si{\ohm} \\
+$Z$ & Scheinwiderstand (Impedanz) & \si{\ohm} \\
+$\omega$ & Kreisfrequenz & \si{rad/s} \\
+$c$ & Lichtgeschwindigkeit (Vakuum) & \si{m/s} \\
+$\vec{S}$ & Poynting-Vektor & \si{W/m^2} \\
+$n$ & Brechzahl (oder Windungszahl) & 1 \\
+$\lambda$ & Wellenlänge (oder Linienladungsdichte) & \si{m} bzw.\ \si{C/m} \\
+$\nu$, $f$ & Frequenz & \si{Hz} \\
+$g$, $b$ & Gegenstands-, Bildweite (oder: $g$ Gitterkonstante) & \si{m} \\
+$f$ & Brennweite & \si{m} \\
+$h$, $\hbar$ & Planck-Konstante, $\hbar=h/(2\pi)$ & \si{J.s} \\
+$m$ & Masse & \si{kg} \\
+$v$ & Geschwindigkeit & \si{m/s} \\
+$E$, $p$ & Photon: Energie, Impuls & \si{J}, \si{kg.m/s} \\
+\end{ZSFtable}
+\end{tablebox}
+
+\begin{tablebox}[SI-Präfixe (Vorsätze)]
+\begin{ZSFtable}{Y{1.2} Y{0.8} Y{1.2} Y{0.8}}
+\ZSFheaderRow \ZSFhead{Präfix} & \ZSFhead{Faktor} & \ZSFhead{Präfix} & \ZSFhead{Faktor} \\
+Tera (T) & $10^{12}$ & Dezi (d) & $10^{-1}$ \\
+Giga (G) & $10^{9}$  & Zenti (c) & $10^{-2}$ \\
+Mega (M) & $10^{6}$  & Milli (m) & $10^{-3}$ \\
+Kilo (k) & $10^{3}$  & Mikro ($\mu$) & $10^{-6}$ \\
+Hekto (h) & $10^{2}$  & Nano (n) & $10^{-9}$ \\
+Deka (da) & $10^{1}$  & Piko (p) & $10^{-12}$ \\
+              &           & Femto (f) & $10^{-15}$ \\
+              &           & Atto (a) & $10^{-18}$ \\
+\end{ZSFtable}
+\end{tablebox}
+
+\begin{runintext}
+Zusammenhänge wichtiger abgeleiteter Einheiten (hilfreich zum Kürzen in Rechnungen):
+\end{runintext}
+
+\begin{defbox}[Zusammenhänge SI-Einheiten]
+\ZSFfontBoxTitle
+\begin{ZSFtableFlat}{Y{0.6} Y{1.4}}
+\textbf{Kraft}        & $1\,\si{N} = 1\,\si{kg.m/s^2} = 1\,\si{J/m}$ \\
+\textbf{Energie}      & $1\,\si{J} = 1\,\si{N.m} = 1\,\si{W.s} = 1\,\si{C.V} = 1\,\si{kg.m^2/s^2}$ \\
+\textbf{Leistung}     & $1\,\si{W} = 1\,\si{J/s} = 1\,\si{V.A}$ \\
+\textbf{Ladung}       & $1\,\si{C} = 1\,\si{A.s} = 1\,\si{Wb/\ohm}$ \\
+\textbf{Spannung}     & $1\,\si{V} = 1\,\si{J/C} = 1\,\si{W/A}$ \\
+\textbf{Widerstand}   & $1\,\si{\ohm} = 1\,\si{V/A}$ \\
+\textbf{Kapazität}    & $1\,\si{F} = 1\,\si{C/V} = 1\,\si{s/\ohm}$ \\
+\textbf{E-Feld}       & $1\,\si{V/m} = 1\,\si{N/C}$ \\
+\textbf{Magn.\ Feld}  & $1\,\si{T} = 1\,\si{V.s/m^2} = 1\,\si{N/(A.m)}$ \\
+\textbf{Magn.\ Fluss} & $1\,\si{Wb} = 1\,\si{V.s} = 1\,\si{T.m^2}$ \\
+\textbf{Induktivität} & $1\,\si{H} = 1\,\si{V.s/A} = 1\,\si{\ohm.s}$ \\
+\end{ZSFtableFlat}
+\end{defbox}
+
+\begin{runintext}
+Weitere Zeichen im Kontext (z.\,B. $T$ Periode/Temperatur, $\theta$ Winkel, $A$ Fläche, $\ell$ Länge) wie in den Kapiteln verwendet.
+\end{runintext}
+
+\begin{runintext}
+Zusammenhänge wichtiger physikalischer Grössen durch Ableitungen (und Integrale):
+\end{runintext}
+\begin{defbox}[Wichtige physikalische Ableitungen]
+\ZSFfontBoxTitle
+\begin{ZSFtableFlat}{Y{0.64} Y{1.36}}
+\textbf{Stromstärke}     & $I = \frac{\mathrm{d}Q}{\mathrm{d}t} = \dot{Q}, \quad I_{\mathrm{mittel}} = \frac{\Delta Q}{\Delta t}$ \\
+\textbf{E-Feld \& Pot.}  & $\vec{E} = -\nabla\varphi, \quad E_x = -\frac{\mathrm{d}\varphi}{\mathrm{d}x}$ \\
+\textbf{Spannung}        & $U = \int \vec{E} \cdot \mathrm{d}\vec{s} = \Delta\varphi$ \\
+\textbf{Kraft \& Energie}& $\vec{F} = -\nabla E_{\mathrm{pot}}, \quad F_x = -\frac{\mathrm{d}E_{\mathrm{pot}}}{\mathrm{d}x}$ \\
+\textbf{Arbeit}          & $W = \int \vec{F} \cdot \mathrm{d}\vec{s} = \Delta E$ \\
+\textbf{Leistung}        & $P = \frac{\mathrm{d}E}{\mathrm{d}t} = \dot{E}$ \\
+\textbf{Magn.\ Induktion}& $U_{\mathrm{ind}} = -\frac{\mathrm{d}\Phi_{\mathrm{mag}}}{\mathrm{d}t} = -\dot{\Phi}_{\mathrm{mag}}$ \\
+                         & $U_{\mathrm{mittel}} = -\frac{\Delta\Phi_{\mathrm{mag}}}{\Delta t}$ \\
+\textbf{Geschwindigkeit} & $v = \frac{\mathrm{d}x}{\mathrm{d}t} = \dot{x}$ \\
+\textbf{Beschleunigung}  & $a = \frac{\mathrm{d}v}{\mathrm{d}t} = \ddot{x}$ \\
+\end{ZSFtableFlat}
+\end{defbox}
+
+\begin{defbox}[Geometrie: Flächen \& Volumen]
+\ZSFfontBoxTitle
+\begin{ZSFtableFlat}{Y{0.5} Y{1.5}}
+\textbf{Kreis}    & Fläche: $A = \pi r^2$ \\
+                  & Umfang: $U = 2\pi r$ \\
+\textbf{Kugel}    & Volumen: $V = \frac{4}{3}\pi r^3$ \\
+                  & Oberfläche: $A = 4\pi r^2$ \\
+\textbf{Zylinder} & Volumen: $V = \pi r^2 h$ \\
+                  & Mantelfläche: $M = 2\pi r h$ \\
+                  & Oberfläche: $A = 2\pi r^2 + 2\pi r h$ \\
+\end{ZSFtableFlat}
+\end{defbox}
+
+% ============================================================

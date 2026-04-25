@@ -1,0 +1,75 @@
+% !TEX root = ../main.tex
+% SECTION 8: MAXWELL & EM-WELLEN
+% ============================================================
+
+\StartChapter{Maxwell-Gleichungen \& EM-Wellen}
+
+\begin{runintext}
+Zusammenfassung aller elektromagnetischen Phänomene durch vier fundamentale Gleichungen, deren wichtigste Konsequenz die Existenz von \ZSFkeyword{elektromagnetischen Wellen} (\ZSFkeyword{Licht}) im Vakuum ist.
+\end{runintext}
+
+\SubsectionBar[sec:8-1]{Maxwell}
+\begin{runintext}
+Das vollständige Gleichungssystem (\ZSFkeyword{Gauß}, \ZSFkeyword{Faraday}, \ZSFkeyword{Ampère} mit \ZSFkeyword{Verschiebungsstrom}) als Basis der gesamten klassischen Elektrodynamik.
+\end{runintext}
+\begin{runintext}
+\ZSFkeyword{Verschiebungsstrom}: Ampère verallgemeinert für nichtstationäre Ströme.
+\end{runintext}
+\begin{formulabox}
+\[ I_V = \varepsilon_0\,\frac{\mathrm{d}\Phi_{\mathrm{el}}}{\mathrm{d}t} \quad \text{Maxwell} \]
+\formulasep
+\[ \oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0\,(I + I_V) = \mu_0 I + \mu_0\varepsilon_0\,\frac{\mathrm{d}\Phi_{\mathrm{el}}}{\mathrm{d}t} \]
+\formulanote{Zweck: Verschiebungsstrom; Ampère erweitert (nichtstationär).}
+\end{formulabox}
+\begin{formulabox}
+\[ \oint_A E_n\,\mathrm{d}A = \frac{q_{\mathrm{innen}}}{\varepsilon_0} \quad \text{Gauß E} \]
+\formulasep
+\[ \oint_A B_n\,\mathrm{d}A = 0 \quad \text{Gauß B} \]
+\formulasep
+\[ \oint_C \vec{E}\cdot\mathrm{d}\vec{\ell} = -\frac{\mathrm{d}\Phi_{\mathrm{mag}}}{\mathrm{d}t} \quad \text{Faraday} \]
+\formulasep
+\[ \oint_C \vec{B}\cdot\mathrm{d}\vec{\ell} = \mu_0\varepsilon_0\left(\frac{\mathrm{d}}{\mathrm{d}t}\int_A \vec{E}\cdot\mathrm{d}\vec{A}\right) \quad \text{Ampère-Maxwell} \]
+\formulanote{Zweck: Maxwell-Gleichungen integral (Gauß E/B, Faraday, Ampère).}
+\end{formulabox}
+
+\SubsectionBar[sec:8-2]{Wellengleichung}
+\begin{runintext}
+Aus Maxwell folgt die Ausbreitung von E- und B-Feldern als \ZSFkeyword{transversale Wellen} mit \ZSFkeyword{Lichtgeschwindigkeit} im Vakuum.
+\end{runintext}
+\begin{formulabox}
+\[ \frac{\partial^2 E}{\partial x^2} = \frac{1}{c^2}\,\frac{\partial^2 E}{\partial t^2}, \quad \frac{\partial^2 B}{\partial x^2} = \frac{1}{c^2}\,\frac{\partial^2 B}{\partial t^2} \]
+\formulasep
+\[ c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} = 3{,}00\times 10^8\,\si{m/s} \]
+\[ E = c\,B \quad \text{in der Welle} \]
+\formulanote{Zweck: EM-Wellengleichung; Lichtgeschwindigkeit; Amplitudenverhältnis in der Welle.}
+\end{formulabox}
+\begin{runintext}
+$\vec{E}$, $\vec{B}$, Ausbreitungsrichtung paarweise senkrecht; $\vec{E}\times\vec{B}$ in Ausbreitungsrichtung.
+\end{runintext}
+
+\ZSFfig{graphics/Wellenlehre_Transversalwelle_Vektoren_senkrecht.png}{Transversalwelle}{$\vec{E}\perp\vec{B}\perp\vec{k}$; Ausbreitung in $\vec{k}$-Richtung}
+
+\SubsectionBar[sec:8-3]{Poynting}
+\begin{runintext}
+Berechnung von Energiedichte, Energiestrom (\ZSFkeyword{Intensität}) sowie Impuls und \ZSFkeyword{Strahlungsdruck} einer elektromagnetischen Welle.
+\end{runintext}
+\begin{formulabox}
+\[ w_{\mathrm{em}} = w_{\mathrm{el}} + w_{\mathrm{mag}} = \varepsilon_0 E^2 = \frac{B^2}{\mu_0} = \frac{E\,B}{\mu_0 c} \]
+\formulasep
+\[ I_{\mathrm{em}} = \langle w_{\mathrm{em}}\rangle\,c = \frac{E_{\mathrm{eff}}B_{\mathrm{eff}}}{\mu_0} = \frac{1}{2}\,\frac{E_0 B_0}{\mu_0} = \langle|\vec{S}|\rangle \]
+\[ \vec{S} = \frac{\vec{E}\times\vec{B}}{\mu_0} \quad \text{Poynting} \]
+\formulasep
+\[ p = \frac{E_{\mathrm{em}}}{c} \quad \text{Impuls} \]
+\[ P_S = \frac{I_{\mathrm{em}}}{c} \quad \text{Strahlungsdruck} \]
+\formulanote{Zweck: EM-Energiedichte; Intensität; Poynting-Vektor; Impuls und Druck der Welle.}
+\end{formulabox}
+
+\SubsectionBar[sec:8-4]{EM-Spektrum}
+\begin{runintext}
+Die Einteilung der elektromagnetischen Wellen nach \ZSFkeyword{Frequenz} bzw.\ \ZSFkeyword{Wellenlänge}, von Radiowellen bis Gammastrahlung.
+\end{runintext}
+\begin{runintext}
+Licht, Radio, Röntgen, Gamma, Mikrowellen: gleiche Natur, unterschiedliche $\lambda$ und $f$. \ZSFkeyword{Dipolstrahlung}: beschleunigte Ladungen; Antenne: Intensität $\perp$ Antenne max, entlang Achse null; $\vec{E}$ der Welle $\parallel$ Antenne.
+\end{runintext}
+
+% ============================================================

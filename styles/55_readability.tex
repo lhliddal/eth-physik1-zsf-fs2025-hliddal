@@ -1,0 +1,77 @@
+% ============================================================
+% 55_readability.tex — Intelligente Zeilenumbruch-Steuerung
+% ============================================================
+% Ziel: In schmalen Spalten (hier 4-spaltiges Landscape-A4) bricht
+% der Satz lieber an natürlichen Wortgrenzen, statt die Zeile mit
+% Leerraum aufzublähen oder Wörter hart zu trennen, nur um den
+% rechten Rand zu erreichen.
+%
+% Kernbausteine:
+%   \ZSFReadableParams : feingetunte TeX-Penalties (Flattersatz-kompatibel)
+%   \ZSFReadableOn     : aktiviert RaggedRight + Parameter im aktuellen Scope
+%   ZSFReadable        : Environment für lokale Anwendung
+%   \ZSFbreak / \ZSFnobreak / \ZSFallowbreak : semantische Feinsteuerung
+%   \ifZSFReadableBody : globaler Schalter (Standard: an)
+%
+% Wird in runintext / defbox / warnbox automatisch angewendet.
+% ============================================================
+
+% ------------------------------------------------------------
+% Globaler Schalter: erlaubt das System projektweit aus-/einzuschalten
+% ------------------------------------------------------------
+\newif\ifZSFReadableBody
+\ZSFReadableBodytrue
+\newcommand{\ZSFReadableBodyOn}{\ZSFReadableBodytrue}
+\newcommand{\ZSFReadableBodyOff}{\ZSFReadableBodyfalse}
+
+% ------------------------------------------------------------
+% TeX-Parameter für "lieber früh brechen als quetschen / hyphen"
+% Werte bewusst moderat, damit Silbentrennung möglich bleibt, aber
+% nicht die erste Wahl ist (wichtig in 4-Spalten-Layout).
+% ------------------------------------------------------------
+\newcommand{\ZSFReadableParams}{%
+  \pretolerance=1200          % erst ohne Hyphenation versuchen (Default 100)
+  \tolerance=2400             % dann Hyphenation erlauben (Default 200)
+  \hyphenpenalty=200          % Silbentrennung leicht teurer -> Wortgrenze bevorzugt
+  \exhyphenpenalty=200        %
+  \doublehyphendemerits=10000 % zwei Bindestriche in Folge vermeiden
+  \finalhyphendemerits=10000  % letzter Absatz-Zeile nicht hyphenisieren
+  \emergencystretch=2.5em     % Notfall-Dehnung gegen overfull hbox
+  \hbadness=2000              % leise bei kleinen underfulls
+  \linepenalty=10             % extra Zeilen sind günstig -> weniger Quetschen
+}
+
+% ------------------------------------------------------------
+% \ZSFReadableOn: Flattersatz (RaggedRight aus ragged2e) + Parameter
+%   - RaggedRight behält Silbentrennung als Fallback bei.
+%   - rightskip hat etwas Flexibilität, damit kein "Waterfall"-Look entsteht.
+% ------------------------------------------------------------
+\newcommand{\ZSFReadableOn}{%
+  \RaggedRight
+  \ZSFReadableParams
+}
+
+% Environment-Form für lokalen Einsatz
+\newenvironment{ZSFReadable}{\par\ZSFReadableOn\ignorespaces}{\par}
+
+% ------------------------------------------------------------
+% Komfort-Wrapper: bedingtes Aktivieren (gesteuert über \ifZSFReadableBody)
+% ------------------------------------------------------------
+\newcommand{\ZSFReadableAuto}{\ifZSFReadableBody\ZSFReadableOn\fi}
+
+% ------------------------------------------------------------
+% Semantische Break-Helfer (optional, punktuell)
+% ------------------------------------------------------------
+% \ZSFbreak — weicher bevorzugter Umbruch (kein Zwang).
+%   Nutzbar z.B. vor einem langen Wort, das sonst die Zeile sprengt:
+%   "... und das ist\ZSFbreak besonders wichtig ..."
+\newcommand{\ZSFbreak}{\penalty-50\relax}
+
+% \ZSFnobreak — verhindert Umbruch an dieser Stelle (gebundenes Leerzeichen).
+%   Nutzbar für Einheiten: "5\ZSFnobreak kg", "Punktladung\ZSFnobreak q_1"
+\newcommand{\ZSFnobreak}{\nobreak\ }
+
+% \ZSFallowbreak — erlaubt Umbruch an sonst fester Stelle.
+\newcommand{\ZSFallowbreak}{\penalty100\relax}
+
+% ============================================================

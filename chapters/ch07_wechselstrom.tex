@@ -1,0 +1,97 @@
+% !TEX root = ../main.tex
+% SECTION 7: WECHSELSTROM
+% ============================================================
+
+\StartChapter{Wechselstromkreise}
+
+\begin{runintext}
+Analyse von Stromkreisen bei \ZSFkeyword{sinusförmigen Spannungen}. Wichtige Konzepte umfassen \ZSFkeyword{Effektivwerte}, Blind- und Scheinwiderstände (\ZSFkeyword{Impedanz}) bei Spulen und Kondensatoren, sowie Leistung und oszillierende \ZSFkeyword{LC-Netzwerke}.
+\end{runintext}
+
+\SubsectionBar[sec:7-1]{Wechselspannung, Effektiv}
+\begin{runintext}
+Grundlagen des Wechselstroms: Sinus-Signal, Peak-Strom und der zeitliche \ZSFkeyword{Effektivwert} (\ZSFkeyword{RMS}), um Leistungen einfach zu mitteln.
+\end{runintext}
+\begin{runintext}
+\ZSFkeyword{Generator}: mechanisch $\to$ elektrisch (Spule im B-Feld oder Magnet in Spule).
+\end{runintext}
+
+\ZSFfig{graphics/Elektrotechnik_Wechselstrom_Widerstand_Phasenlage.png}{{Sinus $U(t)$, $I(t)$, Leistung $P(t)$}}{Am ohmschen Widerstand: $U$ und $I$ in Phase, $P\ge 0$}
+
+\begin{formulabox}
+% chktex 35
+\[ U_{\mathrm{ind}}(t) = U_{\mathrm{ind},\mathrm{max}}\,\cos(\omega t + \delta) \]
+\formulanote{Zweck: Wechselspannung (Sinus).}
+\formulasep
+\[ \langle \sin^2(\omega t)\rangle = \langle \cos^2(\omega t)\rangle = \tfrac{1}{2} \]
+\[ \int_0^T \sin^2(\omega t)\,dt = \int_0^T \cos^2(\omega t)\,dt = \tfrac{T}{2} \]
+\formulanote{Zweck: Mittelwerte über Periode $T$ $\to$ Ursprung des Faktors $1/\sqrt{2}$.}
+\formulasep
+\[ I_{\mathrm{eff}} = \sqrt{\langle I^2\rangle} = \frac{I_{\max}}{\sqrt{2}} \]
+\formulanote{Zweck: Effektivstrom (Definition; Sinus-Resultat).}
+\end{formulabox}
+
+\ZSFmanualColumnBreak
+\SubsectionBar[sec:7-2]{Blindwiderstände}
+\begin{runintext}
+Der elektrische Widerstand von Spule und Kondensator für Wechselströme (ohne reale Leistung zu verbrauchen) und deren \ZSFkeyword{Phasenverschiebung}.
+\end{runintext}
+\begin{formulabox}
+\[ I_{\mathrm{eff}} = \frac{U_{R,\mathrm{eff}}}{R} \quad \text{R: Strom und Spannung in Phase} \]
+\formulasep
+\[ X_L = \omega L \quad \text{induktiv} \]
+\[ I_{\mathrm{eff}} = \frac{U_{L,\mathrm{eff}}}{\omega L} = \frac{U_{L,\mathrm{eff}}}{X_L} \]
+\formulasep
+\[ X_C = \frac{1}{\omega C} \quad \text{kapazitiv} \]
+\[ I_{\mathrm{eff}} = \frac{U_{C,\mathrm{eff}}}{X_C} \]
+\formulanote{Zweck: Ohm am Widerstand; Blindwiderstände und Strom-Spannungs-Beziehung (Spule, Kondensator).}
+\end{formulabox}
+\begin{runintext}
+\textbullet~\ZSFkeyword{Spule}: Spannung eilt Strom um 90° voraus.\\
+\textbullet~\ZSFkeyword{Kondensator}: Strom eilt Spannung um 90° voraus.\\
+\textbullet~Kondensator blockiert niedrige Frequenzen / Spule blockiert hohe Frequenzen.
+\end{runintext}
+
+\SubsectionBar[sec:7-3]{Impedanz}
+\begin{runintext}
+\ZSFkeyword{Impedanz} $Z$: frequenzabhängiger Gesamtwiderstand einer Wechselstrommasche, welcher Wirk- und Blindanteile vereint; Phasenbeziehungen via \ZSFkeyword{Zeigerdiagramm}.
+\end{runintext}
+
+\SubsectionBar[sec:7-4]{Mittlere Leistung}
+\begin{runintext}
+Warum Spule und Kondensator die Energie nur hin- und herschieben und nur der Ohm'sche Widerstand Energie in Wärme umwandelt (\ZSFkeyword{Wirkleistung}).
+\end{runintext}
+\begin{formulabox}
+\[ \langle P \rangle = U_{R,\mathrm{eff}}\,I_{\mathrm{eff}} = R\,I_{\mathrm{eff}}^2 \quad \text{am Widerstand} \]
+\formulasep
+\[ \langle P \rangle = 0 \quad \text{an Spule oder Kondensator} \]
+\formulanote{Zweck: Mittlere Leistung nur am Ohm'schen Widerstand; Spule/Kondensator leistungsfrei.}
+\end{formulabox}
+
+\SubsectionBar[sec:7-5]{Transformatoren}
+\begin{runintext}
+Hoch- oder Heruntertransformieren von Wechselspannungen mithilfe zweier \ZSFkeyword{magnetisch gekoppelter Spulen} (\ZSFkeyword{Primär-} und \ZSFkeyword{Sekundärseite}).
+\end{runintext}
+\begin{formulabox}
+\[ U_2 = \frac{n_2}{n_1}\,U_1 \quad (1 = \text{Primär\,/\,Netz},\ 2 = \text{Sekundär\,/\,Gerät}) \]
+\formulasep
+\[ U_{1,\mathrm{eff}}\,I_{1,\mathrm{eff}} = U_{2,\mathrm{eff}}\,I_{2,\mathrm{eff}} \quad \text{ideal} \]
+\formulanote{Zweck: Übersetzung Spannung (Windungszahlen); ideal: Primär- und Sekundärleistung gleich.}
+\end{formulabox}
+
+\SubsectionBar[sec:7-6]{LC, RLC}
+\begin{runintext}
+Der elektrische \ZSFkeyword{Schwingkreis}: \ZSFkeyword{Resonanz}phänomene bei spezifischen Frequenzen, wenn sich induktiver und kapazitiver Blindwiderstand gegenseitig auslöschen.
+\end{runintext}
+\begin{runintext}
+Kondensator über Spule: Ladung und Strom oszillieren; Energie wandert zwischen $E_{\mathrm{el}}$ und $E_{\mathrm{mag}}$. \ZSFkeyword{RLC}: Dämpfung durch Joule'sche Wärme.
+\end{runintext}
+\begin{formulabox}
+\[ \omega_0 = \frac{1}{\sqrt{LC}} \quad \text{Eigenfrequenz} \]
+\formulanote{Zweck: Eigenfrequenz ungedämpfter LC-Schwingkreis; Resonanz wenn Generatorfrequenz $=\omega_0$.}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Resonanz}: Generatorfrequenz $= \omega_0$.
+\end{runintext}
+
+% ============================================================

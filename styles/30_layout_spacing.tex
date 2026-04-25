@@ -1,0 +1,119 @@
+% ============================================================
+% 30_layout_spacing.tex — Layout-Grundlagen & zentrale Spacing-Stellschrauben
+% ============================================================
+
+\setlength{\parskip}{4.0pt plus 1pt minus 0.5pt} % Mehr Luft zwischen Absätzen
+\setlength{\parindent}{0pt}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\brokenpenalty=4000
+\predisplaypenalty=10000
+
+\raggedcolumns
+\newcounter{zsfFirstChap}\setcounter{zsfFirstChap}{1}
+
+% ------------------------------------------------------------
+% SPACING-SCALE (4 Stufen)
+% ------------------------------------------------------------
+\newlength{\ZSFspaceXS}\setlength{\ZSFspaceXS}{1pt}
+\newlength{\ZSFspaceS} \setlength{\ZSFspaceS}{2pt}
+\newlength{\ZSFspaceM} \setlength{\ZSFspaceM}{4pt}
+\newlength{\ZSFspaceL} \setlength{\ZSFspaceL}{8pt}
+
+% Abstand ober-/unterhalb von Text-Box-Bindungen und Trennlinien
+\newlength{\ZSFspaceOuter}  \setlength{\ZSFspaceOuter}{3pt}
+\newlength{\ZSFspaceSep}    \setlength{\ZSFspaceSep}{3pt}
+
+% ------------------------------------------------------------
+% Spalten-Layout
+% ------------------------------------------------------------
+\setlength{\columnsep}{\ZSFspaceL} % Konsistent mit Skala
+\setlength{\multicolsep}{\ZSFspaceS}
+\setlength{\emergencystretch}{2em}
+
+% ------------------------------------------------------------
+% Titelbalken & Hilfsgrössen
+% ------------------------------------------------------------
+\newlength{\ZSFtitleBarHeight}    \setlength{\ZSFtitleBarHeight}{9.2pt}
+\newlength{\ZSFtitleboxBeforeSkip}\setlength{\ZSFtitleboxBeforeSkip}{4pt} % Leicht mehr Luft vor defbox/tablebox/figbox/warnbox
+\newlength{\ZSFtextMinPad}        \setlength{\ZSFtextMinPad}{\ZSFspaceXS}
+\newlength{\ZSFpostChapterNudge}  \setlength{\ZSFpostChapterNudge}{4pt} % Wieder etwas enger an den Inhalt gebunden
+\newlength{\ZSFbreakThreshold}    \setlength{\ZSFbreakThreshold}{4\baselineskip} % Mindesthöhe für BreakIfNotEnoughSpace (wie Analysis)
+\newlength{\ZSFbreakThresholdChapter} \setlength{\ZSFbreakThresholdChapter}{10\baselineskip} % Grössere Mindesthöhe für Hauptkapitel
+
+% Maximale Höhe für eingebettete Grafiken: verhindert, dass Bilder
+% mit hoher Aspect-Ratio (z.B. Toroid-Portrait) übermässig Platz
+% einnehmen. Kombiniert mit width=\linewidth + keepaspectratio wird
+% jedes Bild auf min(Spaltenbreite, ZSFfigMaxHeight) skaliert.
+% Siehe \ZSFfig in styles/60_boxes.tex.
+\newlength{\ZSFfigMaxHeight}      \setlength{\ZSFfigMaxHeight}{2.6cm}
+
+% ------------------------------------------------------------
+% TEXT-BOX-BINDUNGEN
+% Koppeln Fliesstext direkt an Boxen — verhindert visuellen Bruch.
+% ------------------------------------------------------------
+\newcommand{\ZSFRobustUnskip}{%
+  \ifdim\lastskip>0pt\relax\unskip\fi
+  \ifnum\lastpenalty=0\else\unpenalty\fi
+  \ifdim\lastskip>0pt\relax\unskip\fi
+}
+
+% Text der zur Box DARUNTER gehört (Einleitung)
+\newcommand{\textVorBox}[1]{%
+  \par
+  \addvspace{\ZSFspaceOuter}%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  {\small\color{TextVorBoxColor} \noindent #1\par}%
+  \endgroup
+  \nopagebreak
+  \vspace{\ZSFspaceXS}%
+  \vspace{-\ZSFspaceS}%
+}
+
+% Text der zur Box DARÜBER gehört (Ergänzung/Folgerung)
+\newcommand{\textNachBox}[1]{%
+  \par
+  \ZSFRobustUnskip
+  \vspace{\ZSFspaceXS}%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \nopagebreak
+  {\small\color{TextNachBoxColor} \noindent #1\par}%
+  \endgroup
+  \addvspace{\ZSFspaceOuter}%
+}
+
+% Titel/Text vor einer Formel (innerhalb der formulabox)
+\newcommand{\textVorFormel}[1]{%
+  \par
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \noindent\raggedright\textcolor{black!60}{\textbf{#1}}\par
+  \endgroup
+  \vspace{\ZSFspaceXS}%
+  \centering
+}
+
+% Erklärungstext nach einer Formel (innerhalb der formulabox)
+\newcommand{\textNachFormel}[1]{%
+  \par
+  \vspace{\ZSFspaceXS}%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \noindent\raggedright\textcolor{black!60}{\small #1}\par
+  \endgroup
+  \centering
+}
+
+% ------------------------------------------------------------
+% Semantische Gap-Helfer für Kapiteldateien
+% ------------------------------------------------------------
+\newcommand{\ZSFSectionGap}{\vspace{8pt}} % Etwas mehr Luft vor Unterkapiteln
+\newcommand{\ZSFgapXS}{\vspace{\ZSFspaceXS}}
+\newcommand{\ZSFgapS}{\vspace{\ZSFspaceS}}
+\newcommand{\ZSFgapM}{\vspace{\ZSFspaceM}}
+\newcommand{\ZSFgapL}{\vspace{\ZSFspaceL}}
+\newcommand{\ZSFmanualColumnBreak}{\columnbreak} % Expliziter Spaltenumbruch an gewünschter Stelle
+\newcommand{\ZSFtabColGap}{\hspace{1.5em}}

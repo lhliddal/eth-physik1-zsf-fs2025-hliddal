@@ -1,0 +1,83 @@
+% !TEX root = ../main.tex
+% SECTION 11: QUANTENPHYSIK
+% ============================================================
+
+\StartChapter{Einführung in die Quantenphysik}
+
+\begin{runintext}
+Zusammenbruch der klassischen Physik auf mikroskopischer Ebene: \ZSFkeyword{Welle-Teilchen-Dualismus}, fundamentale \ZSFkeyword{Unschärfe} und die probabilistische Natur durch die \ZSFkeyword{Schrödingergleichung}.
+\end{runintext}
+
+\SubsectionBar[sec:11-1]{De Broglie}
+\begin{runintext}
+Wellenstruktur von Materie: Jedem Teilchen mit Impuls $p$ lässt sich eine \ZSFkeyword{Materiewelle} $\lambda$ zuordnen.
+\end{runintext}
+\begin{runintext}
+Bewegung wie Welle (Beugung, Interferenz), Energieaustausch in \ZSFkeyword{Quanten}. De Broglie:
+\end{runintext}
+\begin{formulabox}
+\[ E = h\,\nu, \quad p = \frac{h}{\lambda} \]
+\formulasep
+\begin{longformula}
+E_{\mathrm{kin}} = \frac{p^2}{2m}
+\quad \Rightarrow \quad
+\lambda = \frac{h\,c}{\sqrt{2m\,c^2\,E_{\mathrm{kin}}}}
+\quad \text{nichtrelativistisch}
+\end{longformula}
+\formulanote{Zweck: De-Broglie und $\lambda(E_{\mathrm{kin}})$.}
+\end{formulabox}
+
+\SubsectionBar[sec:11-2]{Heisenberg}
+\begin{runintext}
+Prinzipielle \ZSFkeyword{Messgrenze}: \ZSFkeyword{Ort} und \ZSFkeyword{Impuls} eines Teilchens können niemals gleichzeitig beliebig exakt bestimmt werden.
+\end{runintext}
+\begin{formulabox}
+\[ \Delta x\,\Delta p \ge \frac{\hbar}{2} \quad \text{Heisenberg} \]
+\formulanote{Zweck: Unschärferelation Ort–Impuls.}
+\end{formulabox}
+\begin{runintext}
+Ort und Impuls nicht gleichzeitig beliebig genau messbar.
+\end{runintext}
+
+\SubsectionBar[sec:11-3]{Photonen}
+\begin{runintext}
+Teilchennatur von Licht: Energie ist in diskreten Quanten (\ZSFkeyword{Photonen}) paketiert, erklärt Phänomene wie den \ZSFkeyword{Photoelektrischen Effekt} und den \ZSFkeyword{Compton-Effekt}.
+\end{runintext}
+\begin{formulabox}
+\[ E = h\,\nu, \quad E = p\,c \]
+\[ h = 6{,}626\times 10^{-34}\,\si{J.s} = 4{,}136\times 10^{-15}\,\si{eV.s}, \quad \hbar = \frac{h}{2\pi} \]
+\[ h\,c = 1240\,\si{eV.nm} \]
+\formulasep
+% chktex 35
+\[ E_{\mathrm{kin},\mathrm{max}} = \frac{1}{2}\,m\,v_{\mathrm{max}}^2 = h\,\nu - W_{\mathrm{Abl}} \quad \text{Photoeffekt} \]
+\formulasep
+\[ \lambda_2 - \lambda_1 = \frac{h}{m_{\mathrm{e}}c}\,(1-\cos\theta) = \lambda_{\mathrm{C}}\,(1-\cos\theta) \quad \text{Compton} \]
+\[ \lambda_{\mathrm{C}} = \frac{h}{m_{\mathrm{e}}c} = 2{,}426\,\si{pm} \]
+\formulanote{Zweck: Photon Energie/Impuls; Photoeffekt; Compton-Streuung; Compton-Wellenlänge.}
+\end{formulabox}
+
+\SubsectionBar[sec:11-4]{Schrödinger}
+\begin{runintext}
+Die fundamentale Bewegungsgleichung in der Quantenmechanik, welche die zeitliche und räumliche Entwicklung der \ZSFkeyword{Aufenthaltswahrscheinlichkeit} $\psi$ beschreibt.
+\end{runintext}
+\begin{runintext}
+Zustand durch \ZSFkeyword{Wellenfunktion} $\psi$ (komplex); für stehende Wellen:
+\end{runintext}
+\begin{formulabox}
+\[ \psi(x,t) = \varphi(x)\,\mathrm{e}^{-\mathrm{i}\omega t} \]
+\formulanote{Zweck: Zeitabhängigkeit bei stationären Zuständen.}
+\end{formulabox}
+\begin{formulabox}
+\[ -\frac{\hbar^2}{2m}\,\frac{\partial^2\psi}{\partial x^2} + E_{\mathrm{pot}}\,\psi = \mathrm{i}\hbar\,\frac{\partial\psi}{\partial t} \quad \text{zeitabhängig} \]
+\[ -\frac{\hbar^2}{2m}\,\frac{\mathrm{d}^2\varphi}{\mathrm{d}x^2} + E_{\mathrm{pot}}(x)\,\varphi = E\,\varphi(x) \quad \text{zeitunabhängig} \]
+\formulasep
+\[ P(x,t)\,\mathrm{d}x = |\psi(x,t)|^2\,\mathrm{d}x \quad \text{Wahrsch.-dichte} \]
+\[ \int_{-\infty}^{+\infty} |\varphi(x)|^2\,\mathrm{d}x = 1 \quad \text{Normierung} \]
+\formulasep
+\[ \langle x \rangle = \int_{-\infty}^{+\infty} x\,|\varphi(x)|^2\,\mathrm{d}x \]
+\[ \langle F(x) \rangle = \int_{-\infty}^{+\infty} F(x)\,|\varphi(x)|^2\,\mathrm{d}x \]
+\formulanote{Zweck: Schrödinger (zeitabh./unabh.); Aufenthaltswahrscheinlichkeit; Normierung; Erwartungswerte.}
+\end{formulabox}
+\begin{runintext}
+\ZSFkeyword{Korrespondenzprinzip}: makroskopisch $\lambda$ winzig $\to$ keine Beugung; viele Quanten $\to$ Energie quasi kontinuierlich. \ZSFkeyword{Ehrenfest}: Erwartungswerte folgen näherungsweise klassischen Bewegungsgleichungen. \ZSFkeyword{Bohr}: hohe Quantenzahlen $\to$ Quanten = klassisch.
+\end{runintext}

@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LaTeX: Check full main",
+      "type": "shell",
+      "command": "./tests/check_main_full.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Build main",
+      "type": "shell",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=.",
+        "-auxdir=build",
+        "main.tex"
+      ],
+      "dependsOn": "LaTeX: Check full main",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Lint (chktex)",
+      "type": "shell",
+      "command": "chktex",
+      "args": [
+        "-q",
+        "-n8",
+        "-n36",
+        "-n44",
+        "main.tex"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Format all tex",
+      "type": "shell",
+      "command": "find . -name '*.tex' -print0 | xargs -0 latexindent -w -s -l=.latexindent.yaml",
+      "problemMatcher": []
+    }
+  ]
+}

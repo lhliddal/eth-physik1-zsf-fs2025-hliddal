@@ -1,0 +1,60 @@
+% ============================================================
+% 50_typography_semantics.tex — Schriftmakros für Box-Typen & semantische Inhaltsmakros
+% ============================================================
+
+% Explizite bp-Groessen (wie Analysis) fuer praezise, font-unabhaengige Kontrolle
+\newcommand{\ZSFfontChapter}{\sffamily\bfseries\fontsize{8.1bp}{9.1bp}\selectfont}
+\newcommand{\ZSFfontSection}{\sffamily\bfseries\fontsize{8.1bp}{9.1bp}\selectfont}
+\newcommand{\ZSFfontBoxTitle}{\sffamily\bfseries\fontsize{8.1bp}{9.1bp}\selectfont}
+% chktex 6
+\newcommand{\ZSFfontNote}{\sffamily\fontsize{6.7bp}{7.5bp}\itshape\selectfont}
+
+% Tabellen-Hilfsmakros
+\newcommand{\TableCellNote}[1]{{\ZSFfontNote #1}}
+\newcommand{\TableTitleBreak}{\newline}
+\newcommand{\TableTitle}[2][]{%
+  \textbf{#2}%
+  \if\relax\detokenize{#1}\relax\else\TableTitleBreak\TableCellNote{#1}\fi
+}
+
+% Semantische Tabellen-Fontgroessen
+% (werden als optionales Argument an ZSFtable/ZSFtableFlat/ZSFtablePlain
+%  uebergeben — siehe styles/20_tables.tex).
+% Default = \ZSFfontTable. Fuer lange, dichte Tabellen (viele Zeilen,
+% knapper Inhalt) \ZSFfontTableDense verwenden.
+\newcommand{\ZSFfontTable}{\normalsize}
+\newcommand{\ZSFfontTableDense}{\footnotesize}
+
+% Semantische Inhaltsmakros (konsistente Skalierung und einfache Anpassung)
+%
+% \ZSFkeyword{...} — hebt zentrale Fachbegriffe im Fliesstext hervor.
+% Verwendung:
+%   * nur in \begin{runintext}, \begin{defbox}, \begin{warnbox} und
+%     aehnlichen Text-Boxen, NIEMALS in Formeln, \formulanote oder
+%     Ueberschriften (\SubsectionBar, \StartChapter).
+%   * sparsam einsetzen (Richtwert: 1-3 pro runintext, 4-6 im
+%     Kapitel-Intro, insgesamt ca. 10 pro Kapitel) -- es sollen echte
+%     Fachbegriffe (Gesetze, Effekte, Bauteile, zentrale Groessen)
+%     sein, keine generischen Substantive oder Verben.
+% Rendering ist bewusst schlicht als \textbf{...}; Aenderungen zentral
+% hier vornehmen (z.B. Farbe, Underline) -- nicht in Kapiteln.
+\newcommand{\ZSFkeyword}[1]{\textbf{#1}}
+\newcommand{\ZSFScriptRef}[1]{\hfill\textcolor{white!80}{\small (S.#1)}}
+\newcommand{\ZSFconclusion}[1]{%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+  \noindent$\Rightarrow$ #1%
+  \par\vspace{-\parskip}\vspace{\ZSFspaceS}%
+}
+
+% Tabellen-Styling (benötigt [table]{xcolor} und array)
+\newcommand{\ZSFrowColor}{\rowcolor{\FormulaboxBackColor}}
+\newcommand{\ZSFtableRuleColor}{black!70}
+\newcommand{\SetZSFtableRuleColor}[1]{\renewcommand{\ZSFtableRuleColor}{#1}}
+\newcommand{\ZSFtableRuleWidth}{0.5pt}
+\newcommand{\SetZSFtableRuleWidth}[1]{\renewcommand{\ZSFtableRuleWidth}{#1}}
+\newcommand{\ZSFbeginTableRuleStyle}{%
+  \begingroup
+  \arrayrulecolor{\ZSFtableRuleColor}%
+  \setlength{\arrayrulewidth}{\ZSFtableRuleWidth}%
+}
+\newcommand{\ZSFendTableRuleStyle}{\endgroup}

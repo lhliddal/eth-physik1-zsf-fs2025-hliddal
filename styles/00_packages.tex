@@ -1,0 +1,37 @@
+% ============================================================
+% 00_packages.tex — Pakete und Paket-Level-Setup
+% ============================================================
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sfdefault,lf]{carlito} % Sans-Serif für Fliess-Text (bessere Lesbarkeit), Mathe bleibt Serif
+
+\usepackage[landscape, a4paper, margin=1.5mm]{geometry}
+\usepackage{microtype}
+\usepackage{multicol}
+
+\usepackage{mathtools}             % Superset von amsmath: DeclarePairedDelimiter, coloneqq etc.
+\let\Bbbk\relax                    % Verhindert Konflikt zwischen newpxmath und amssymb
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{
+  mode=match,                      % Einheiten passen sich der Schriftart an (wichtig mit carlito)
+  propagate-math-font=true,
+  reset-text-family=false,
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = symbol
+}
+
+\usepackage[table]{xcolor}         % [table] aktiviert \rowcolor, \columncolor in Tabellen
+\usepackage{array}                 % Erweiterte Spaltentypen und \arrayrulecolor
+\usepackage{tabularx}              % Tabellen mit \linewidth-Fit und X-Spalten
+\usepackage{xstring}
+\usepackage{ragged2e}              % Silbentrennung bei Flattersatz in schmalen Spalten
+\usepackage{enumitem}              % Kompakte Listen via \setlist
+
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, raster}
+
+\usepackage{hyperref}
