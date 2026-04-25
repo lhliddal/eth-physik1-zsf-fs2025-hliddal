@@ -1,0 +1,43 @@
+name: Release PDF
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            latexmk \
+            texlive-latex-extra \
+            texlive-lang-german \
+            chktex \
+            poppler-utils
+
+      - name: Run checks
+        run: make check
+
+      - name: Build PDF
+        run: make build
+
+      - name: Generate release hash
+        run: make release-proof
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            physik1_fs2025_hliddal.pdf
+            build/main.pdf.sha256
