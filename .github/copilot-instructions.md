@@ -69,6 +69,39 @@ Der Workspace liegt auf dem **Desktop** (nicht iCloud). Der Pfad kann Umlaute/Le
 latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=build -auxdir=build main.tex
 ```
 
+## GitHub Naming & Release System (für KI-Agenten)
+
+### Namenskonventionen
+
+- **Repository-Muster:** `eth-<fach>-zsf-<semester>-hliddal`
+  - Beispiel: `eth-physik1-zsf-fs2025-hliddal`
+- **PDF-Muster im Root:** `<fach>_<semester>_hliddal.pdf`
+  - Beispiel: `physik1_fs2025_hliddal.pdf`
+- **Semesterformat:** `fsYYYY` oder `hsYYYY`
+- **Release-Tags:** Semantic Versioning als `vMAJOR.MINOR.PATCH` (z. B. `v1.0.1`)
+
+### GitHub Actions System
+
+- Workflow `CI Build` (push/PR auf `main`):
+  - führt `make check` und `make build` aus
+  - veröffentlicht die PDF als Artifact
+- Workflow `Release PDF` (push auf Tag `v*`):
+  - führt `make check`, `make build`, `make release-proof` aus
+  - erstellt GitHub Release mit:
+    - `physik1_fs2025_hliddal.pdf`
+    - `build/main.pdf.sha256`
+
+### Agent-Regeln für GitHub-Änderungen
+
+- Änderungen an Naming-Patterns **immer** konsistent in:
+  - `Makefile`
+  - `tests/check_root_clean.sh`
+  - `README.md`
+  - `.github/workflows/*.yml`
+  - `.cursorrules` und dieser Datei
+- Release-Flow nie auf manuelle Uploads zurückbauen; automatisierte Assets beibehalten.
+- Bei Tag-Releases immer prüfen, dass PDF-Name und Hash-Datei mit den oben definierten Mustern übereinstimmen.
+
 ## Benutzer-Kurzbezeichnungen für Balken/Titel
 
 Der Nutzer verwendet folgende Kurzformen — immer korrekt zuordnen:

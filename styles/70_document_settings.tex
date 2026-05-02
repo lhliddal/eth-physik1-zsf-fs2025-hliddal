@@ -5,6 +5,15 @@
 
 \hypersetup{colorlinks=true, linkcolor=PaletteElektro, urlcolor=PaletteMagneto}
 
+% Seitenzahl unten rechts (overlay, layout-neutral)
+\AddToShipoutPictureFG{%
+  \AtPageLowerLeft{%
+    \put(\dimexpr\paperwidth-1.5em\relax,1.2ex){%
+      \makebox(0,0)[rb]{\sffamily\fontsize{6.5pt}{7pt}\selectfont\color{black!55}\thepage}%
+    }%
+  }%
+}
+
 % Enge Math-Display-Abstände (wie Analysis: keine grossen Lücken um Formeln)
 \AtBeginDocument{
   \setlength{\abovedisplayskip}{\ZSFspaceXS}

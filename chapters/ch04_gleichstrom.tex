@@ -24,6 +24,10 @@ I = \frac{\Delta q}{\Delta t} \quad \text{mit } q = N e \quad\Rightarrow\quad \f
 \[ I = q\,(n/V)\,A\,v_{\mathrm{d}} \quad \text{($q=-e$ für Elektronen)} \]
 \[ \vec{\jmath} = q\,(n/V)\,\vec{v}_{\mathrm{d}} \quad \text{Stromdichte} \]
 \formulanote{Zweck: Strom und Stromdichte über Driftgeschwindigkeit.}
+\formulasep
+\[ j = \frac{I}{A} \quad \text{makroskopisch} \]
+\[ \vec{E} = \rho\,\vec{\jmath} = \frac{\vec{\jmath}}{\sigma} \quad \text{lokales Ohm'sches Gesetz} \]
+\formulanote{Zweck: Stromdichte aus Strom/Fläche; Feld-Stromdichte-Beziehung im Material.}
 \end{formulabox}
 \begin{runintext}
 $N$: Anzahl Ladungsträger, $e$: \ZSFkeyword{Elementarladung}, $n/V$: Anzahldichte, $A$: Querschnitt, $v_{\mathrm{d}}$: \ZSFkeyword{Driftgeschwindigkeit}. $I$ = Fluss von $\vec{\jmath}$ durch Fläche.
@@ -40,7 +44,8 @@ Das \ZSFkeyword{Ohm'sche Gesetz} und die Berechnung von Widerständen aus Materi
 \[ R = \rho\,\frac{\ell}{A} \quad \text{spezifischer Widerstand $\rho$} \]
 \formulasep
 \[ \alpha = \frac{(\rho-\rho_0)/\rho_0}{T-T_0} \quad \text{Temperaturkoeffizient} \]
-\formulanote{Zweck: Ohm'sches Gesetz; Widerstand aus Geometrie und Material; Temperaturabhängigkeit.}
+\[ \rho = \rho_0\,\bigl(1 + \alpha(T-T_0)\bigr) \]
+\formulanote{Zweck: Ohm'sches Gesetz; Widerstand aus Geometrie und Material; Temperaturabhängigkeit (explizite Form).}
 \end{formulabox}
 
 \SubsectionBar[sec:4-3]{Leistung}

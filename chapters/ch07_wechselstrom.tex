@@ -21,6 +21,7 @@ Grundlagen des Wechselstroms: Sinus-Signal, Peak-Strom und der zeitliche \ZSFkey
 \begin{formulabox}
 % chktex 35
 \[ U_{\mathrm{ind}}(t) = U_{\mathrm{ind},\mathrm{max}}\,\cos(\omega t + \delta) \]
+\[ \omega = 2\pi\nu = 2\pi f = \frac{2\pi}{T} \]
 \formulanote{Zweck: Wechselspannung (Sinus).}
 \formulasep
 \[ \langle \sin^2(\omega t)\rangle = \langle \cos^2(\omega t)\rangle = \tfrac{1}{2} \]
@@ -56,6 +57,15 @@ Der elektrische Widerstand von Spule und Kondensator für Wechselströme (ohne r
 \begin{runintext}
 \ZSFkeyword{Impedanz} $Z$: frequenzabhängiger Gesamtwiderstand einer Wechselstrommasche, welcher Wirk- und Blindanteile vereint; Phasenbeziehungen via \ZSFkeyword{Zeigerdiagramm}.
 \end{runintext}
+\begin{formulabox}
+\[ Z_R = R \quad Z_L = i\omega L \quad Z_C = \frac{1}{i\omega C} = -\frac{i}{\omega C} \]
+\formulanote{Zweck: Komplexe Impedanzen der Einzelelemente.}
+\formulasep
+\[ Z = R + i\!\left(\omega L - \frac{1}{\omega C}\right) \quad \text{RLC seriell} \]
+\[ |Z| = \sqrt{R^2 + \left(\omega L - \tfrac{1}{\omega C}\right)^2} \]
+\[ \tan(\Delta\varphi) = \frac{\omega L - 1/(\omega C)}{R} \]
+\formulanote{Zweck: Gesamtimpedanz, Betrag und Phasenwinkel im RLC-Serienkreis.}
+\end{formulabox}
 
 \SubsectionBar[sec:7-4]{Mittlere Leistung}
 \begin{runintext}
@@ -66,6 +76,10 @@ Warum Spule und Kondensator die Energie nur hin- und herschieben und nur der Ohm
 \formulasep
 \[ \langle P \rangle = 0 \quad \text{an Spule oder Kondensator} \]
 \formulanote{Zweck: Mittlere Leistung nur am Ohm'schen Widerstand; Spule/Kondensator leistungsfrei.}
+\formulasep
+\[ \langle P \rangle = U_{\mathrm{eff}}\,I_{\mathrm{eff}}\,\cos(\Delta\varphi) \]
+\[ \cos(\Delta\varphi) = \frac{R}{|Z|} \quad \text{Leistungsfaktor} \]
+\formulanote{Zweck: Wirkleistung im Wechselstromkreis mit Phasenverschiebung $\Delta\varphi$.}
 \end{formulabox}
 
 \SubsectionBar[sec:7-5]{Transformatoren}

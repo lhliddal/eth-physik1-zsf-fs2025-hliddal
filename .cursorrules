@@ -53,6 +53,21 @@ make clean            # build/ + aux entfernen
 - Aktueller Standardname: `physik1_fs2025_hliddal.pdf`.
 - Beispiel-Muster: `mathe2_hs2025_hliddal.pdf`, `physik1_fs2025_hliddal.pdf`.
 
+## GitHub-Namenskonvention
+
+- Repository-Namen folgen dem Muster: `eth-<fach>-zsf-<semester>-hliddal`.
+- Aktuelles Repository: `eth-physik1-zsf-fs2025-hliddal`.
+- Semesterformat im Repo: `fsYYYY` oder `hsYYYY` (z. B. `fs2025`, `hs2025`).
+- Release-Tags nutzen Semantic Versioning: `vMAJOR.MINOR.PATCH` (z. B. `v1.0.1`).
+- PDF-Dateinamen bleiben im Muster `fach_semester_hliddal.pdf` (ohne `eth-` Prefix).
+
+## GitHub-System (Automatisierung)
+
+- CI-Workflow auf `main`: `make check` + `make build`, PDF als Artifact.
+- Release-Workflow auf Tags `v*`: `make check` + `make build` + `make release-proof`.
+- Release-Assets: `physik1_fs2025_hliddal.pdf` und `build/main.pdf.sha256`.
+- `README.md` muss immer einen sichtbaren Direktdownload und Link auf Releases enthalten.
+
 ## Agent-Build-Pflicht
 
 Nach **jeder** inhaltlichen oder Layout-Änderung durch die KI sofort bauen, damit die

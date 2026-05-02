@@ -85,7 +85,7 @@
   right=\ZSFspaceM,
   top=\ZSFspaceM,
   bottom=\ZSFspaceM,
-  before skip=12pt,
+  before skip=\ZSFsubsectionBarBeforeSkip,
   after skip=\ZSFspaceS,
   fontupper=\ZSFfontSection,
   #1
@@ -95,6 +95,7 @@
 \newcommand{\SubsectionBarNumbered}[2][]{
   \BreakIfNotEnoughSpace
   \penalty-500
+  \ZSFCollapseAfterChapterBar
   \refstepcounter{subsection}
   \if\relax\detokenize{#1}\relax\else\label{#1}\fi
   \begin{subsectionbar}
@@ -105,6 +106,7 @@
 \newcommand{\SubsectionBarStar}[2][]{
   \BreakIfNotEnoughSpace
   \penalty-500
+  \ZSFCollapseAfterChapterBar
   \if\relax\detokenize{#1}\relax\else\label{#1}\fi
   \begin{subsectionbar}
     \textcolor{white}{#2}
