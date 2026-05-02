@@ -123,13 +123,19 @@
 % ------------------------------------------------------------
 \newif\ifzsfAfterChapterBar
 \zsfAfterChapterBarfalse
-\newcommand{\ZSFMarkAfterChapterBar}{\global\zsfAfterChapterBartrue}
+\newcommand{\ZSFConsumeAfterChapterBar}{%
+  \global\zsfAfterChapterBarfalse
+}
+\newcommand{\ZSFMarkAfterChapterBar}{%
+  \global\zsfAfterChapterBartrue
+  \AddToHookNext{para/begin}{\ZSFConsumeAfterChapterBar}%
+}
 % Kollabiert den before-skip der SubsectionBar auf \ZSFsubsectionAfterChapterGap,
 % wenn sie direkt nach einer ChapterBar steht. Reset nach Verwendung.
 \newcommand{\ZSFCollapseAfterChapterBar}{%
   \ifzsfAfterChapterBar
     \vspace*{\dimexpr\ZSFsubsectionAfterChapterGap-\ZSFsubsectionBarBeforeSkip\relax}%
-    \global\zsfAfterChapterBarfalse
+    \ZSFConsumeAfterChapterBar
   \fi
 }
 

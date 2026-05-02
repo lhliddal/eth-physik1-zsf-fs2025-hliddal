@@ -74,6 +74,12 @@
 % ------------------------------------------------------------
 % Subsection-Bar (+ numberless Star-Variante)
 % ------------------------------------------------------------
+\newcommand{\ZSFSubsectionBarTopSpacing}{%
+  \par
+  \addvspace{\ZSFsubsectionBarBeforeSkip}%
+  \BreakIfNotEnoughSpace
+  \ZSFCollapseAfterChapterBar
+}
 \newtcolorbox{subsectionbar}[1][]{
   enhanced jigsaw,
   breakable=false,
@@ -85,7 +91,7 @@
   right=\ZSFspaceM,
   top=\ZSFspaceM,
   bottom=\ZSFspaceM,
-  before skip=\ZSFsubsectionBarBeforeSkip,
+  before skip=0pt,
   after skip=\ZSFspaceS,
   fontupper=\ZSFfontSection,
   #1
@@ -93,9 +99,8 @@
 \makeatletter
 \newcommand{\SubsectionBar}{\@ifstar{\SubsectionBarStar}{\SubsectionBarNumbered}}
 \newcommand{\SubsectionBarNumbered}[2][]{
-  \BreakIfNotEnoughSpace
+  \ZSFSubsectionBarTopSpacing
   \penalty-500
-  \ZSFCollapseAfterChapterBar
   \refstepcounter{subsection}
   \if\relax\detokenize{#1}\relax\else\label{#1}\fi
   \begin{subsectionbar}
@@ -104,9 +109,8 @@
   \penalty10000
 }
 \newcommand{\SubsectionBarStar}[2][]{
-  \BreakIfNotEnoughSpace
+  \ZSFSubsectionBarTopSpacing
   \penalty-500
-  \ZSFCollapseAfterChapterBar
   \if\relax\detokenize{#1}\relax\else\label{#1}\fi
   \begin{subsectionbar}
     \textcolor{white}{#2}
@@ -157,6 +161,7 @@
   bottom=\ZSFspaceM,
   before skip=\ZSFtitleboxBeforeSkip,
   after skip=\ZSFspaceS,
+  before={\ZSFConsumeAfterChapterBar},
   before upper={\parskip=\ZSFspaceS\relax\ZSFReadableAuto},
   zsftitlebar,
 }}
@@ -191,6 +196,7 @@
   bottom=\ZSFspaceM,
   before skip=\ZSFspaceS,
   after skip=\ZSFspaceS,
+  before={\ZSFConsumeAfterChapterBar},
   before upper={\parskip=\ZSFspaceS\centering},
   after upper={\par},
   middle=\ZSFspaceSep,
@@ -238,7 +244,7 @@
 % ------------------------------------------------------------
 % Runintext + Grafik-Platzhalter
 % ------------------------------------------------------------
-\newenvironment{runintext}{\par\addvspace{\ZSFspaceS}\noindent\ZSFReadableAuto\ignorespaces}{\par}
+\newenvironment{runintext}{\ZSFConsumeAfterChapterBar\par\addvspace{\ZSFspaceS}\noindent\ZSFReadableAuto\ignorespaces}{\par}
 
 \newcommand{\PlaceholderGraphic}[1]{
   \fbox{\parbox{0.9\linewidth}{\centering\small [Grafik: #1]}}
@@ -322,6 +328,7 @@
   sidebyside gap=\ZSFspaceM,
   lefthand width=#1\linewidth,
   lower separated=false,
+  before={\ZSFConsumeAfterChapterBar},
   before skip=\ZSFspaceS,
   after skip=\ZSFspaceS,
   boxsep=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt
